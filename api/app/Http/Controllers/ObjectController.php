@@ -9,16 +9,17 @@ use Illuminate\Support\Facades\Http;
 
 class ObjectController extends Controller
 {
-    public function show()
+    public function index(Request $request)
     {
-        try {
             $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects");
             $responseData = $apiResponse->json();
-    
-            return response()->json($responseData);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Error en la solicitud a la API externa'], 500);
-        }
+            // print_r($responseData);
+            $perPage = $request->input('per_page', 10);
+            $objects = array_chunk($responseData['objects'], $perPage);
+            $page = $request->input('page', 1);
+            return response()->json([
+            'data' => $objects[$page - 1] ?? []
+            ]);
     }
 
     public function showId($objectID)
