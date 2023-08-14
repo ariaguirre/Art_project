@@ -12,7 +12,6 @@ class DepartmentController extends Controller
         $responseData = $apiResponse->json();
         $perPage = $request->input('per_page', 10);
         $departments = array_chunk($responseData['departments'], $perPage);
-
         $page = $request->input('page', 1);
 
         return response()->json([
