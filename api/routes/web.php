@@ -8,12 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/objects', 'App\Http\Controllers\ObjectController@show');
-// Route::get('/objects', [ObjectController::class, 'index']);
-Route::get('/objects', [ObjectController::class, 'test']);
+Route::get('/objects', [ObjectController::class, 'index']);
 
 
-// Route::get('/objects/{objectID}', [App\Http\Controllers\ObjectController::class, 'showId']);
+Route::get('/objects/{objectID}', [App\Http\Controllers\ObjectController::class, 'showId']);
 
 // Route::get('/departments', [App\Http\Controllers\ObjectController::class, 'showDepartments']);
 Route::get('/departments', [DepartmentController::class, 'index']);

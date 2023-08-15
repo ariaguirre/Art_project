@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h2>Objects List</h2>
-    <ul>
-      <li v-for="object in objects" :key="object.objectID">
-        {{ object.title }}
-      </li>
-    </ul>
+    <h1 class="h1">Artworks</h1>
+    <div class="container">
+      <div v-for="(artwork, index) in artworks" :key="index" class="artwork-item">
+        <div class="artwork-info">
+          <h2>{{ artwork.title }} - {{ artwork.artistDisplayName }}</h2>
+          <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,31 +18,26 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      objects: [],
-      currentPage: 1,
-      totalPages: 1,
+      artworks: []
     };
   },
   mounted() {
-    this.fetchObjects(this.currentPage);
+    this.fetchArtworks();
   },
   methods: {
-    fetchObjects(page) {
-      axios.get(`http://localhost:8000/objects?page=${page}&per_page=10`)
-    .then(response => {
-        this.objects = response.data.data;
-        this.currentPage = response.data.current_page;
-        this.totalPages = response.data.last_page;
-    })
-    .catch(error => {
-        console.error(error);
-    });
-    },
-    goToPage(page) {
-      if (page >= 1 && page <= this.totalPages) {
-        this.fetchObjects(page);
-      }
-    },
-  },
+    fetchArtworks() {
+      axios.get('http://127.0.0.1:8000/objects')
+        .then(response => {
+          console.log(this.artworks);
+          this.artworks = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching artworks:', error);
+        });
+    }
+  }
 };
 </script>
+
+
+<style scoped src="./ObjectsStyles.css"></style>  
