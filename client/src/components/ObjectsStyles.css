@@ -2,9 +2,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 100%;
+    width: 180%;
     margin: 0 auto;
     padding: 20px;
+    border: 2px solid red;
+    margin-left: -50rem;
 }
   
 .artwork-item {

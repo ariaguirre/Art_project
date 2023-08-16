@@ -9,6 +9,11 @@
         </div>
       </div>
     </div>
+    <div class="pagination">
+      <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+    </div>
   </div>
 </template>
 
@@ -18,8 +23,20 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      artworks: []
+      artworks: [],
+      itemsPerPage: 10,
+      currentPage: 1
     };
+  },
+  computed: {
+    displayedArtworks() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.artworks.slice(start, end);
+    },
+    totalPages() {
+      return Math.ceil(this.artworks.length / this.itemsPerPage);
+    }
   },
   mounted() {
     this.fetchArtworks();
@@ -28,12 +45,21 @@ export default {
     fetchArtworks() {
       axios.get('http://127.0.0.1:8000/objects')
         .then(response => {
-          console.log(this.artworks);
           this.artworks = response.data;
         })
         .catch(error => {
           console.error('Error fetching artworks:', error);
         });
+    },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
     }
   }
 };
