@@ -5,10 +5,17 @@
     width: 90%;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid red;
     text-decoration: none;
 }
 
+.loading{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center;
+    font-size: large;
+    margin-left: 57rem;
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+}
 .header{
     display: flex;
     flex-direction: row;

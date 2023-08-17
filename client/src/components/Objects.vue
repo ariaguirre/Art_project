@@ -4,6 +4,7 @@
       <h1 class="h1">European Artworks</h1>
     </div>
     <br/>
+    <h3 class="loading" v-if="isLoading">Loading...</h3>
     <div class="container">
       <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
       <router-link :to="'/detail/' + artwork.objectId">
@@ -31,6 +32,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      isLoading: true,
       artworks: [],
       itemsPerPage: 10,
       currentPage: 1
@@ -57,6 +59,7 @@ export default {
         ...artwork,
         objectId: artwork.objectId // Asegúrate de que el nombre del campo sea correcto
       }));
+      this.isLoading = false;
       console.log(this.artworks)
         })
         .catch(error => {

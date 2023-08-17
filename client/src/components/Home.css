@@ -1,0 +1,55 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center;
+    width: 100%;
+    color:#ffff;
+    background-color: rgb(114, 32, 32);
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+    padding: 15px;
+}
+
+
+
+.btn {
+    border: none;
+    background-color: rgb(114, 32, 32);
+    color: white;
+    font-size: 20px;
+    width: 25%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 15rem;
+    margin-left: 45rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+ 
+  .btn:hover {
+    background-color: rgb(70, 16, 16);
+  }
+
+  .artwork-carousel {
+    width: 80%; /* Ajusta el ancho del carrusel según tus necesidades */
+    margin: 0 auto;
+  }
+  
+  .carousel-item {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .carousel-item h3 {
+    margin-top: 10px;
+  }
