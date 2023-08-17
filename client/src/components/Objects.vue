@@ -3,14 +3,15 @@
     <div class="header">
       <h1 class="h1">European Artworks</h1>
     </div>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
             <p><a href="/asia">Asia</a></p>
             <p><a href="/africa">Africa</a></p>
             <p><a href="/egypt">Egypt</a></p>
             <p><a href="/greek">Greek</a></p>
             <p><a href="/islamic">Islamic</a></p>
-    </nav>
+    </nav> -->
     <br/>
+    <button class="dept" @click="toDepartments">Art departments</button>
     <h3 class="loading" v-if="isLoading">Loading...</h3>
     <div class="container">
       <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -85,6 +86,9 @@ export default {
     },
     gotoPage(pageNumber) {
       this.currentPage = pageNumber;
+    },
+    toDepartments(){
+      this.$router.push('/departments');
     }
   }
 };

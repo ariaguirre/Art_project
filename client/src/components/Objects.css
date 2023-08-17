@@ -108,6 +108,22 @@
     background-color: rgb(70, 16, 16);
   }
 
+.dept{
+    border: none;
+    background-color: rgb(114, 32, 32);
+    color: white;
+    font-size: 15px;
+    width: 10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    margin-left: 6rem;
+    transition: background-color 0.3s ease-in-out;
+  }
 
-
-  
+  .dept:hover {
+    background-color: rgb(70, 16, 16);
+  } 
