@@ -46,6 +46,80 @@ class ObjectController extends Controller
         return response()->json($cachedData);
     }
 
+    public function africa()
+    {
+        $cachedData = Cache::remember('africa_data', now()->addHours(1), function () {
+            $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=5");
+            $responseData = $apiResponse->json();
+
+            $objectIds = $responseData['objectIDs'] ?? [];
+            $limitedObjectIds = array_slice($objectIds, 0, 150);
+
+            $titlesWithArtistsAndImages = [];
+
+            foreach ($limitedObjectIds as $objectId) {
+                $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
+                $objectData = $objectResponse->json();
+
+                $title = $objectData['title'] ?? 'Título no disponible';
+                $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
+                $primaryImage = $objectData['primaryImage'] ?? null;
+
+                if ($primaryImage) {
+                    $combinedData = [
+                        'objectId' => $objectId,
+                        'title' => $title,
+                        'artistDisplayName' => $artistDisplayName,
+                        'primaryImage' => $primaryImage
+                    ];
+
+                    if (!in_array($combinedData, $titlesWithArtistsAndImages)) {
+                        $titlesWithArtistsAndImages[] = $combinedData;
+                    }
+                }
+            }
+            return $titlesWithArtistsAndImages;
+        });
+        return response()->json($cachedData);
+    }
+
+    public function asia()
+    {
+        $cachedData = Cache::remember('asia_data', now()->addHours(1), function () {
+            $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=6");
+            $responseData = $apiResponse->json();
+
+            $objectIds = $responseData['objectIDs'] ?? [];
+            $limitedObjectIds = array_slice($objectIds, 0, 150);
+
+            $titlesWithArtistsAndImages = [];
+
+            foreach ($limitedObjectIds as $objectId) {
+                $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
+                $objectData = $objectResponse->json();
+
+                $title = $objectData['title'] ?? 'Título no disponible';
+                $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
+                $primaryImage = $objectData['primaryImage'] ?? null;
+
+                if ($primaryImage) {
+                    $combinedData = [
+                        'objectId' => $objectId,
+                        'title' => $title,
+                        'artistDisplayName' => $artistDisplayName,
+                        'primaryImage' => $primaryImage
+                    ];
+
+                    if (!in_array($combinedData, $titlesWithArtistsAndImages)) {
+                        $titlesWithArtistsAndImages[] = $combinedData;
+                    }
+                }
+            }
+            return $titlesWithArtistsAndImages;
+        });
+        return response()->json($cachedData);
+    }
+
     // MISMA SIN CACHE
     // public function test()
     // {

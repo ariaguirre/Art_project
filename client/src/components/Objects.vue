@@ -3,6 +3,12 @@
     <div class="header">
       <h1 class="h1">European Artworks</h1>
     </div>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="/asia">Asia</a></li>
+            <li><a href="/africa">Africa</a></li>
+        </ul>
+    </nav>
     <br/>
     <h3 class="loading" v-if="isLoading">Loading...</h3>
     <div class="container">
