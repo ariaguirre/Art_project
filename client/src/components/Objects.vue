@@ -1,13 +1,15 @@
 <template>
   <div>
-    <h1 class="h1">Artworks</h1>
+    <h1 class="h1">European Artworks</h1>
     <div class="container">
-      <div v-for="(artwork, index) in artworks" :key="index" class="artwork-item">
+      <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
+      <router-link :to="'/detail/' + artwork.objectId">
         <div class="artwork-info">
           <h2>{{ artwork.title }} - {{ artwork.artistDisplayName }}</h2>
           <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
         </div>
-      </div>
+      </router-link>
+    </div>
     </div>
     <div class="pagination">
       <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
@@ -45,7 +47,11 @@ export default {
     fetchArtworks() {
       axios.get('http://127.0.0.1:8000/objects')
         .then(response => {
-          this.artworks = response.data;
+          this.artworks = response.data.map(artwork => ({
+        ...artwork,
+        objectId: artwork.objectId // Asegúrate de que el nombre del campo sea correcto
+      }));
+      console.log(this.artworks)
         })
         .catch(error => {
           console.error('Error fetching artworks:', error);

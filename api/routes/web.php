@@ -11,7 +11,7 @@ Route::get('/', function () {
 Route::get('/objects', [ObjectController::class, 'index']);
 
 
-Route::get('/objects/{objectID}', [App\Http\Controllers\ObjectController::class, 'showId']);
+Route::get('/objects/{objectID}', [App\Http\Controllers\ObjectController::class, 'getObjectDetails']);
 
 // Route::get('/departments', [App\Http\Controllers\ObjectController::class, 'showDepartments']);
 Route::get('/departments', [DepartmentController::class, 'index']);

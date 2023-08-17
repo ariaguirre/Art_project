@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../components/Home.vue'
 import Objects from '../components/Objects.vue'
 import Detail from '../components/Detail.vue'
 import Departments from '../components/Departments.vue'
@@ -6,6 +7,11 @@ import Departments from '../components/Departments.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
+    },
     {
       path: '/objects',
       name: 'objects',
@@ -17,7 +23,7 @@ const router = createRouter({
       component: Departments
     },
     {
-      path: '/detail',
+      path: '/detail/:objectId',
       name: 'detail',
       component: Detail
     },

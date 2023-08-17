@@ -11,7 +11,7 @@ class ObjectController extends Controller
 {
     public function index()
     {
-        $cachedData = Cache::remember('artwork_data', now()->addHours(1), function () {
+        $cachedData = Cache::remember('artwork_data', now()->addMinutes(2), function () {
             $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=11");
             $responseData = $apiResponse->json();
 
@@ -30,6 +30,7 @@ class ObjectController extends Controller
 
                 if ($primaryImage) {
                     $combinedData = [
+                        'objectId' => $objectId,
                         'title' => $title,
                         'artistDisplayName' => $artistDisplayName,
                         'primaryImage' => $primaryImage
@@ -78,16 +79,17 @@ class ObjectController extends Controller
     public function getObjectDetails($objectId)
     {
         $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
-        $responseData = $apiResponse->json();
-
-        $data = $responseData['title'] ?? 'Título no disponible';
-
-        // Puedes acceder a otros campos de la obra de manera similar
-
+        $objectData = $apiResponse->json(); // Cambiado a $objectData
+    
+        $title = $objectData['title'] ?? 'Título no disponible';
+        $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
+        $primaryImage = $objectData['primaryImage'] ?? null;
+    
         return response()->json([
             'objectId' => $objectId,
             'title' => $title,
-            // Agrega otros campos según tus necesidades
+            'artistDisplayName' => $artistDisplayName,
+            'primaryImage' => $primaryImage
         ]);
     }
     public function showId($objectID)
