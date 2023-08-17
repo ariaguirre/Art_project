@@ -1,0 +1,41 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center;
+    width: 100%;
+    color:#ffff;
+    background-color: rgb(114, 32, 32);
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+    padding: 15px;
+}
+
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px; 
+    margin-top: 5rem;
+  }
+  
+  .btn {
+    border: none;
+    background-color: rgb(114, 32, 32);
+    color: white;
+    font-size: 20px;
+    width: 50%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 05rem;
+    margin-left: 10rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .btn:hover {
+    background-color: rgb(70, 16, 16);
+  } 

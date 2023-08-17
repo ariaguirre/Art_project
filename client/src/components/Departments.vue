@@ -1,50 +1,41 @@
 <template>
   <div>
-    <h2>Departments List</h2>
-    <ul>
-      <li v-for="department in departments" :key="department.departmentId">
-        {{ department.displayName }}
-      </li>
-    </ul>
-    
-    <!-- <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Previous</button> -->
-    <!-- <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next</button> -->
+    <div class="header">
+        <h2>Departments</h2>
+    </div>
+    <div class="container">
+      <button class="btn" @click="objects">European Paintings</button>
+      <button class="btn" @click="asia">Asian Art</button>
+      <button class="btn" @click="africa">Arts of Africa, Oceania, and the Americas</button>
+      <button class="btn" @click="egypt">Egyptian Art</button>
+      <button class="btn" @click="greek">Greek and Roman Art</button>
+      <button class="btn" @click="islamic">Islamic Art</button>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
-  data() {
-    return {
-      departments: [],
-      currentPage: 1,
-      totalPages: 1,
-    };
-  },
-  mounted() {
-    this.fetchDepartments(this.currentPage);
-  },
-  methods: {
-    fetchDepartments(page) {
-      axios.get(`http://localhost:8000/departments?page=${page}&per_page=10`)
-        .then(response => {
-          console.log('response.data', response.data.data)
-          this.departments = response.data.data;
-          console.log('this.departments', this.departments)
-          this.currentPage = response.data.current_page;
-          this.totalPages = response.data.last_page;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    },
-    goToPage(page) {
-      if (page >= 1 && page <= this.totalPages) {
-        this.fetchDepartments(page);
+    methods: {
+      objects() {
+        this.$router.push('/objects');
+      },
+      asia() {
+        this.$router.push('/asia');
+      },
+      africa() {
+        this.$router.push('/africa');
+      }, 
+      greek() {
+        this.$router.push('/greek');
+      }, 
+      islamic() {
+        this.$router.push('/islamic');
+      },
+      egypt() {
+        this.$router.push('/egypt');
       }
-    },
-  },
-};
+    }
+  };
 </script>
+<style scoped src="./Departments.css"></style>
