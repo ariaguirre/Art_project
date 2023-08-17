@@ -1,11 +1,15 @@
 <template>
   <div>
-    <h1 class="h1">European Artworks</h1>
+    <div class="header">
+      <h1 class="h1">European Artworks</h1>
+    </div>
+    <br/>
     <div class="container">
       <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
       <router-link :to="'/detail/' + artwork.objectId">
         <div class="artwork-info">
-          <h2>{{ artwork.title }} - {{ artwork.artistDisplayName }}</h2>
+          <h2>{{ artwork.title }}</h2>
+          <h3>{{ artwork.artistDisplayName }}</h3>
           <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
         </div>
       </router-link>
@@ -13,7 +17,9 @@
     </div>
     <div class="pagination">
       <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
-      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <span class="btn" v-for="pageNumber in totalPages" :key="pageNumber">
+        <button @click="gotoPage(pageNumber)" :class="{ active: pageNumber === currentPage }">{{ pageNumber }}</button>
+      </span>
       <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
     </div>
   </div>
@@ -66,10 +72,13 @@ export default {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
       }
+    },
+    gotoPage(pageNumber) {
+      this.currentPage = pageNumber;
     }
   }
 };
 </script>
 
 
-<style scoped src="./ObjectsStyles.css"></style>  
+<style scoped src="./Objects.css"></style>  

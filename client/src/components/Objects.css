@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid red;
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center;
+    width: 100%;
+    color:#ffff;
+    background-color: rgb(114, 32, 32);
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+    padding: 20px;
+    
+}
+  
+.artwork-item {
+    width: calc(20% - 20px);
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-decoration: none;
+    
+}
+  
+.artwork-info {
+    text-align: center;
+    font-weight: 400;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.artwork-info h2{
+    color: black;
+    font-size: large;
+    text-decoration: none;
+
+}
+.artwork-info h3{
+    color: black;
+    font-size: medium;
+    margin-bottom: 25px;
+    text-decoration: none;
+
+}
+
+  
+.artwork-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  
+  .pagination button {
+    border: none;
+    background-color: rgb(114, 32, 32);
+    color: white;
+    font-size: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .pagination button.active {
+    background-color: rgb(73, 18, 18);
+  }
+  
+  .pagination button:hover {
+    background-color: rgb(70, 16, 16);
+  }
+

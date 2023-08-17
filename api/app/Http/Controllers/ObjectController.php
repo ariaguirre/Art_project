@@ -11,7 +11,7 @@ class ObjectController extends Controller
 {
     public function index()
     {
-        $cachedData = Cache::remember('artwork_data', now()->addMinutes(2), function () {
+        $cachedData = Cache::remember('artwork_data', now()->addHours(1), function () {
             $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=11");
             $responseData = $apiResponse->json();
 
