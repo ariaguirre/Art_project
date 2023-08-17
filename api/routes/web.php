@@ -7,6 +7,9 @@ use App\Http\Controllers\ObjectController;
 Route::get('/objects', [ObjectController::class, 'index']);
 Route::get('/africa', [ObjectController::class, 'africa']);
 Route::get('/asia', [ObjectController::class, 'asia']);
+Route::get('/egypt', [ObjectController::class, 'egypt']);
+Route::get('/greek', [ObjectController::class, 'greek']);
+Route::get('/islamic', [ObjectController::class, 'islamic']);
 
 
 Route::get('/objects/{objectID}', [App\Http\Controllers\ObjectController::class, 'getObjectDetails']);

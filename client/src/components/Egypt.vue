@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="header">
-        <h1 class="h1">Asian Art</h1>
+        <h1 class="h1">Egyptian Art</h1>
       </div>
       <br/>
     <router-link class="btn" to="/objects">Return</router-link>
@@ -54,7 +54,7 @@
     },
     methods: {
       fetchArtworks() {
-        axios.get('http://127.0.0.1:8000/asia')
+        axios.get('http://127.0.0.1:8000/egypt')
           .then(response => {
             this.artworks = response.data.map(artwork => ({
           ...artwork,

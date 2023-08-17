@@ -119,35 +119,117 @@ class ObjectController extends Controller
         });
         return response()->json($cachedData);
     }
+    
+    public function egypt()
+    {
+        $cachedData = Cache::remember('egypt_data', now()->addHours(1), function () {
+            $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=10");
+            $responseData = $apiResponse->json();
 
-    // MISMA SIN CACHE
-    // public function test()
-    // {
-    //     $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects");
-    //     $responseData = $apiResponse->json();
-    
-    //     $objectIds = $responseData['objectIDs'] ?? [];
-    //     $limitedObjectIds = array_slice($objectIds, 0, 200);
-    
-    //     $titlesWithArtists = [];
-    
-    //     foreach ($limitedObjectIds as $objectId) {
-    //         $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
-    //         $objectData = $objectResponse->json();
-    
-    //         $title = $objectData['title'] ?? 'Título no disponible';
-    //         $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
-    
-    //         $combinedTitle = $title . " - " . $artistDisplayName;
-    
-    //         if (!in_array($combinedTitle, $titlesWithArtists)) {
-    //             $titlesWithArtists[] = $combinedTitle;
-    //         }
-    //     }
-    
-    //     return view('objects.index', ['titlesWithArtists' => $titlesWithArtists]);
-    // }
+            $objectIds = $responseData['objectIDs'] ?? [];
+            $limitedObjectIds = array_slice($objectIds, 0, 150);
 
+            $titlesWithArtistsAndImages = [];
+
+            foreach ($limitedObjectIds as $objectId) {
+                $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
+                $objectData = $objectResponse->json();
+
+                $title = $objectData['title'] ?? 'Título no disponible';
+                $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
+                $primaryImage = $objectData['primaryImage'] ?? null;
+
+                if ($primaryImage) {
+                    $combinedData = [
+                        'objectId' => $objectId,
+                        'title' => $title,
+                        'artistDisplayName' => $artistDisplayName,
+                        'primaryImage' => $primaryImage
+                    ];
+
+                    if (!in_array($combinedData, $titlesWithArtistsAndImages)) {
+                        $titlesWithArtistsAndImages[] = $combinedData;
+                    }
+                }
+            }
+            return $titlesWithArtistsAndImages;
+        });
+        return response()->json($cachedData);
+    }
+
+    public function greek()
+    {
+        $cachedData = Cache::remember('greek_data', now()->addHours(1), function () {
+            $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=13");
+            $responseData = $apiResponse->json();
+
+            $objectIds = $responseData['objectIDs'] ?? [];
+            $limitedObjectIds = array_slice($objectIds, 0, 150);
+
+            $titlesWithArtistsAndImages = [];
+
+            foreach ($limitedObjectIds as $objectId) {
+                $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
+                $objectData = $objectResponse->json();
+
+                $title = $objectData['title'] ?? 'Título no disponible';
+                $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
+                $primaryImage = $objectData['primaryImage'] ?? null;
+
+                if ($primaryImage) {
+                    $combinedData = [
+                        'objectId' => $objectId,
+                        'title' => $title,
+                        'artistDisplayName' => $artistDisplayName,
+                        'primaryImage' => $primaryImage
+                    ];
+
+                    if (!in_array($combinedData, $titlesWithArtistsAndImages)) {
+                        $titlesWithArtistsAndImages[] = $combinedData;
+                    }
+                }
+            }
+            return $titlesWithArtistsAndImages;
+        });
+        return response()->json($cachedData);
+    }
+
+    public function islamic()
+    {
+        $cachedData = Cache::remember('islamic_data', now()->addHours(1), function () {
+            $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=14");
+            $responseData = $apiResponse->json();
+
+            $objectIds = $responseData['objectIDs'] ?? [];
+            $limitedObjectIds = array_slice($objectIds, 0, 150);
+
+            $titlesWithArtistsAndImages = [];
+
+            foreach ($limitedObjectIds as $objectId) {
+                $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
+                $objectData = $objectResponse->json();
+
+                $title = $objectData['title'] ?? 'Título no disponible';
+                $artistDisplayName = $objectData['artistDisplayName'] ?? 'Artista desconocido';
+                $primaryImage = $objectData['primaryImage'] ?? null;
+
+                if ($primaryImage) {
+                    $combinedData = [
+                        'objectId' => $objectId,
+                        'title' => $title,
+                        'artistDisplayName' => $artistDisplayName,
+                        'primaryImage' => $primaryImage
+                    ];
+
+                    if (!in_array($combinedData, $titlesWithArtistsAndImages)) {
+                        $titlesWithArtistsAndImages[] = $combinedData;
+                    }
+                }
+            }
+            return $titlesWithArtistsAndImages;
+        });
+        return response()->json($cachedData);
+    }
 
     
     public function getObjectDetails($objectId)
