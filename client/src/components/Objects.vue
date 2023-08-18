@@ -1,17 +1,22 @@
 <template>
   <div class="back">
     <div class="header">
+      <button @click="showMenu = !showMenu">*</button>
       <h1 class="h1">European Artworks</h1>
     </div>
-    <!-- <nav class="navbar">
-            <p><a href="/asia">Asia</a></p>
-            <p><a href="/africa">Africa</a></p>
-            <p><a href="/egypt">Egypt</a></p>
-            <p><a href="/greek">Greek</a></p>
-            <p><a href="/islamic">Islamic</a></p>
-    </nav> -->
     <br/>
-    <button class="dept" @click="toDepartments">Art departments</button>
+    <!-- <button class="dept" @click="toDepartments">Art departments</button> -->
+
+    <div :class="{ 'popup': true, 'popup-active': showMenu }">
+      <p>Art categories</p>
+        <ul class="menu-list">
+        <li><router-link to="/asia">Asian Art</router-link></li>
+        <li><router-link to="/africa">Arts of Africa, Oceania, and the Americas</router-link></li>
+        <li><router-link to="/egypt">Egyptian Art</router-link></li>
+        <li><router-link to="/greek">Greek and Roman Art</router-link></li>
+        <li><router-link to="/islamic">Islamic Art</router-link></li>
+      </ul>
+    </div>
     <h3 class="loading" v-if="isLoading">Loading...</h3>
     <div class="container">
       <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -43,7 +48,8 @@ export default {
       isLoading: true,
       artworks: [],
       itemsPerPage: 10,
-      currentPage: 1
+      currentPage: 1,
+      showMenu: false
     };
   },
   computed: {
