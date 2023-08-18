@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="back">
     <div class="header">
       <h2>Virtual Art Gallery</h2>
     </div>
@@ -10,12 +10,24 @@
   tabindex="0"
   class="carousel__slide">
   <div class="carousel__snapper">
-  <img src="../img/img2.jpg" alt="Image 2" />
-  <img src="../img/img5.jpg" alt="Image 2" />
-  <img src="../img/img6.jpg" alt="Image 2" />
-  <img src="../img/img7.jpg" alt="Image 2" />
-  <img src="../img/img4.jpg" alt="Image 2" />
-  <img src="../img/img1.jpg" alt="Image 2" />
+  <img src="../img/img2.jpg"/>
+  <img src="../img/img5.jpg"/>
+  <img src="../img/img6.jpg"/>
+  <img src="../img/img7.jpg"/>
+  <img src="../img/img4.jpg"/>
+  <img src="../img/img1.jpg"/>
+  <img src="../img/img2.jpg"/>
+  <img src="../img/img5.jpg"/>
+  <img src="../img/img6.jpg"/>
+  <img src="../img/img7.jpg"/>
+  <img src="../img/img4.jpg"/>
+  <img src="../img/img1.jpg"/>
+  <img src="../img/img2.jpg"/>
+  <img src="../img/img5.jpg"/>
+  <img src="../img/img6.jpg"/>
+  <img src="../img/img7.jpg"/>
+  <img src="../img/img4.jpg"/>
+  <img src="../img/img1.jpg"/>
 </div>
 </li>
 </ol>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="back">
     <div class="header">
       <h1 class="h1">European Artworks</h1>
     </div>

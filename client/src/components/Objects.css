@@ -1,3 +1,10 @@
+.back{
+  background-color: #f1f0e1;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-bottom: -5rem;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
