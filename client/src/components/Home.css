@@ -1,55 +1,188 @@
 .header{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    align-items: center;
-    width: 100%;
-    color:#ffff;
-    background-color: rgb(114, 32, 32);
-    margin-top: -0.5rem;
-    margin-left: -0.5rem;
-    padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'Comfortaa';
+  /* font-family: 'Red Hat Display', sans-serif; */
+  align-items: center;
+  font-size: 20px;
+  width: 100%;
+  color:#ffff;
+  background-color: rgb(114, 32, 32);
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+  padding: 20px;
+  letter-spacing: 2px;
+}
+
+.btn {
+  border: none;
+  position: absolute;
+  background-color: rgb(114, 32, 32);
+  color: white;
+  font-size: 20px;
+  width: 25%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 15rem;
+  margin-bottom: 2rem;
+  margin-left: 15rem;
+  transition: background-color 0.3s ease-in-out;
+}
+ 
+.btn:hover {
+  background-color: rgb(70, 16, 16);
+}
+
+
+@keyframes autoscroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-400%);
+  }
+}
+
+
+@keyframes carouselScroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  16.666%, 83.333% {
+    transform: translateY(-100%);
+  }
+  33.333%, 66.666% {
+    transform: translateY(-200%);
+  }
+}
+
+body {
+max-width: 37.5rem;
+margin: 0 auto;
+font-family: 'Lato', sans-serif;
+}
+
+* {
+box-sizing: border-box;
+scrollbar-color: transparent transparent; 
+scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+width: 0;
+}
+
+*::-webkit-scrollbar-track {
+background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+background: transparent;
+border: none;
+}
+
+* {
+-ms-overflow-style: none;
+}
+
+ol, li {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+position: relative;
+padding-top: 5%;
+filter: drop-shadow(0 0 10px #0003);
+perspective: 50px;
+}
+
+.carousel__viewport {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin-right: -50rem;
+  margin-top: -6rem;
+  bottom: 0;
+  margin-left: 20rem;
+  height: 90vh;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  position: relative; 
+  overflow: hidden; 
+}
+
+.carousel__snapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: carouselScroll 110s linear infinite;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  position: relative;
+}
+
+.carousel__slide img {
+  max-width: 100%; 
+  max-height: 100%; 
+  display: block; 
+  margin: 0;
+  line-height: 0; 
+}
+
+.carousel__slide:before {
+content: counter(item);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate3d(-50%,-40%,70px);
+color: #fff;
+font-size: 2em;
 }
 
 
 
-.btn {
-    border: none;
-    background-color: rgb(114, 32, 32);
-    color: white;
-    font-size: 20px;
-    width: 25%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 30px;
-    border-radius: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    margin-top: 15rem;
-    margin-left: 45rem;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
- 
-  .btn:hover {
-    background-color: rgb(70, 16, 16);
-  }
 
-  .artwork-carousel {
-    width: 80%; /* Ajusta el ancho del carrusel según tus necesidades */
-    margin: 0 auto;
-  }
-  
-  .carousel-item {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .carousel-item img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .carousel-item h3 {
-    margin-top: 10px;
-  }
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+position: absolute;
+top: 0;
+margin-top: 37.5%;
+width: 4rem;
+height: 4rem;
+transform: translateY(-50%);
+border-radius: 50%;
+font-size: 0;
+outline: 0;
+}
+
+.carousel::before,
+.carousel__prev {
+left: -1rem;
+}
+
+.carousel::after,
+.carousel__next {
+right: -1rem;
+}
+
