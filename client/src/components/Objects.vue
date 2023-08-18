@@ -1,13 +1,18 @@
 <template>
   <div class="back">
     <div class="header">
-      <button @click="showMenu = !showMenu">*</button>
-      <h1 class="h1">European Artworks</h1>
-    </div>
+  <div class="header-left">
+    <button class="menu-button" @click="showMenu = !showMenu"></button>
+  </div>
+  <div class="header-center">
+    <h1 class="h1">European Artworks</h1>
+  </div>
+</div>
     <br/>
     <!-- <button class="dept" @click="toDepartments">Art departments</button> -->
 
     <div :class="{ 'popup': true, 'popup-active': showMenu }">
+      <button class="close" @click="showMenu = !showMenu">X</button>
       <p>Art categories</p>
         <ul class="menu-list">
         <li><router-link to="/asia">Asian Art</router-link></li>
