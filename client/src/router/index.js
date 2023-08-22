@@ -18,8 +18,8 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/objects',
-      name: 'objects',
+      path: '/artworks',
+      name: 'artworks',
       component: Objects
     },
     {

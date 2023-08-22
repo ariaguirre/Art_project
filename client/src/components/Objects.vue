@@ -71,16 +71,19 @@ export default {
     this.fetchArtworks();
   },
   methods: {
-    fetchArtworks() {
-      axios.get('http://127.0.0.1:8000/objects')
-        .then(response => {
-          this.artworks = response.data.map(artwork => ({
-        ...artwork,
-        objectId: artwork.objectId // Asegúrate de que el nombre del campo sea correcto
-      }));
-      this.isLoading = false;
-      console.log(this.artworks)
-        })
+    async fetchArtworks() {
+      const response = await axios.get('http://127.0.0.1:8000/artworks')
+      this.artworks = response.data
+      console.log('this.artworks', this.artworks)
+      //   .then(response => {
+      //     console.log('response.data',response.data)
+      //     this.artworks = response.data.map(artwork => ({
+      //   ...artwork,
+      //   objectId: artwork.objectId // Asegúrate de que el nombre del campo sea correcto
+      // }));
+      // this.isLoading = false;
+      // console.log(this.artworks)
+      //   })
         .catch(error => {
           console.error('Error fetching artworks:', error);
         });
