@@ -1,31 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Artwork;
+use App\Models\Painting;
 
-class ArtworkController extends Controller
+class PaintingController extends Controller
 {
-    public function get_objects()
+    // public function index()
+    // {
+    //     return view('paintings.index');
+    // }
+    public function get_paintings()
     {
         $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=11");
         $responseData = $apiResponse->json();
 
         $objectIds = $responseData['objectIDs'] ?? [];
-
+        $limit = 280;
+        $count = 0;  
+        
         foreach ($objectIds as $objectId) {
+            if ($count >= $limit) break; 
+            
             $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
             $objectData = $objectResponse->json();
 
-            // Validar y corregir valores numéricos
-            $artistBeginDate = is_numeric($objectData['artistBeginDate']) ? (int) $objectData['artistBeginDate'] : 0; // Otra opción en lugar de 0 podría ser -1
-            $artistEndDate = is_numeric($objectData['artistEndDate']) ? (int) $objectData['artistEndDate'] : 0; // Otra opción en lugar de 0 podría ser -1
-            $objectBeginDate = is_numeric($objectData['objectBeginDate']) ? (int) $objectData['objectBeginDate'] : 0; // Otra opción en lugar de 0 podría ser -1
-            $objectEndDate = is_numeric($objectData['objectEndDate']) ? (int) $objectData['objectEndDate'] : 0; // Otra opción en lugar de 0 podría ser -1
+            $artistBeginDate = $objectData['artistBeginDate'];
+            $artistEndDate = $objectData['artistEndDate'];
+            $objectBeginDate = $objectData['objectBeginDate'];
+            $objectEndDate = $objectData['objectEndDate'];
 
-
-            Artwork::create([
+            Painting::create([
                 'objectId' => $objectId,
                 'title' => $objectData['title'],
                 'artistDisplayName' => $objectData['artistDisplayName'],
@@ -42,9 +49,10 @@ class ArtworkController extends Controller
                 'objectURL' => $objectData['objectURL'],
             ]);
         }
-
         return response()->json(['message' => 'Data inserted successfully']);
     }
+    public function get_all(){
+        $paintings = Painting::all();
+        return response()->json($paintings);
+    }
 }
-
-

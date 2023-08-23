@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArtworksTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('artworks', function (Blueprint $table) {
+        Schema::create('paintings', function (Blueprint $table) {
             $table->id('objectId');
             $table->string('title');
             $table->string('artistDisplayName');
@@ -35,6 +35,6 @@ class CreateArtworksTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artworks');
+        Schema::dropIfExists('paintings');
     }
-}
+};

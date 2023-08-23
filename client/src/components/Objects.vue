@@ -52,9 +52,10 @@ export default {
     return {
       isLoading: true,
       artworks: [],
-      itemsPerPage: 10,
+      itemsPerPage: 20,
       currentPage: 1,
-      showMenu: false
+      showMenu: false,
+      limit: 400
     };
   },
   computed: {
@@ -72,21 +73,15 @@ export default {
   },
   methods: {
     async fetchArtworks() {
-      const response = await axios.get('http://127.0.0.1:8000/artworks')
-      this.artworks = response.data
-      console.log('this.artworks', this.artworks)
-      //   .then(response => {
-      //     console.log('response.data',response.data)
-      //     this.artworks = response.data.map(artwork => ({
-      //   ...artwork,
-      //   objectId: artwork.objectId // Asegúrate de que el nombre del campo sea correcto
-      // }));
-      // this.isLoading = false;
-      // console.log(this.artworks)
-      //   })
-        .catch(error => {
-          console.error('Error fetching artworks:', error);
-        });
+      try{
+        const response = await axios.get('http://127.0.0.1:8000/all')
+        console.log("hola")
+        this.artworks = response.data.slice(0, this.limit);
+        console.log('this.artworks', this.artworks)
+        this.isLoading = false;
+      }catch(error){
+        console.error('Error fetching artworks:', error);
+      };
     },
     previousPage() {
       if (this.currentPage > 1) {
