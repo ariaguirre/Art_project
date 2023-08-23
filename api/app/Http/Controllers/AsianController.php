@@ -49,4 +49,9 @@ class AsianController extends Controller
         return response()->json(['message' => 'Data inserted successfully']);
     }
     
+    public function get_all()
+    {
+        $paintings = Asian::all();
+        return response()->json($paintings);
+    }    
 }
