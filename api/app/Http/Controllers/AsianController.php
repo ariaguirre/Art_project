@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Painting;
+use App\Models\Asian;
 
-class PaintingController extends Controller
+
+class AsianController extends Controller
 {
-    public function get_paintings()
+    public function asian_paintings()
     {
-        $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=11");
+        $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=6");
         $responseData = $apiResponse->json();
 
         $objectIds = $responseData['objectIDs'] ?? [];
-        $limit = 280;
+        $limit = 700;
         $count = 0;  
         
         foreach ($objectIds as $objectId) {
@@ -28,7 +29,7 @@ class PaintingController extends Controller
             $objectBeginDate = $objectData['objectBeginDate'];
             $objectEndDate = $objectData['objectEndDate'];
 
-            Painting::create([
+            Asian::create([
                 'objectId' => $objectId,
                 'title' => $objectData['title'],
                 'artistDisplayName' => $objectData['artistDisplayName'],
@@ -47,9 +48,5 @@ class PaintingController extends Controller
         }
         return response()->json(['message' => 'Data inserted successfully']);
     }
-    public function get_all(){
-        $paintings = Painting::all();
-        return response()->json($paintings);
-    }
-
+    
 }

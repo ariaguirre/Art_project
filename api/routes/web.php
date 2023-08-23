@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ObjectController;
 use App\Http\Controllers\PaintingController;
+use App\Http\Controllers\AsianController;
 
 // use App\Http\Controllers\ArtworkController;
 
@@ -27,3 +28,4 @@ use App\Http\Controllers\PaintingController;
 
 Route::get('/paintings', [PaintingController::class,'get_paintings']);
 Route::get('/all', [PaintingController::class,'get_all']);
+Route::get('/asian', [AsianController::class,'asian_paintings']);
