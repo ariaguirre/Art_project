@@ -75,7 +75,6 @@ export default {
     async fetchArtworks() {
       try{
         const response = await axios.get('http://127.0.0.1:8000/all')
-        console.log("hola")
         this.artworks = response.data.slice(0, this.limit);
         console.log('this.artworks', this.artworks)
         this.isLoading = false;

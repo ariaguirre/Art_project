@@ -18,11 +18,15 @@ class AsianController extends Controller
         $limit = 700;
         $count = 0;  
         
+        
         foreach ($objectIds as $objectId) {
             if ($count >= $limit) break; 
             
             $objectResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
             $objectData = $objectResponse->json();
+
+            $primaryImage = $objectData['primaryImage'];
+            if (empty($primaryImage)) continue;
 
             $artistBeginDate = $objectData['artistBeginDate'];
             $artistEndDate = $objectData['artistEndDate'];
@@ -33,7 +37,7 @@ class AsianController extends Controller
                 'objectId' => $objectId,
                 'title' => $objectData['title'],
                 'artistDisplayName' => $objectData['artistDisplayName'],
-                'primaryImage' => $objectData['primaryImage'],
+                'primaryImage' => $primaryImage,
                 'department' => $objectData['department'],
                 'artistDisplayBio' => $objectData['artistDisplayBio'],
                 'artistNationality' => $objectData['artistNationality'],

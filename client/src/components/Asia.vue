@@ -36,7 +36,8 @@
         isLoading: true,
         artworks: [],
         itemsPerPage: 10,
-        currentPage: 1
+        currentPage: 1,
+        limit: 400
       };
     },
     computed: {
@@ -53,19 +54,15 @@
       this.fetchArtworks();
     },
     methods: {
-      fetchArtworks() {
-        axios.get('http://127.0.0.1:8000/asia')
-          .then(response => {
-            this.artworks = response.data.map(artwork => ({
-          ...artwork,
-          objectId: artwork.objectId 
-        }));
-        this.isLoading = false;
-        console.log(this.artworks)
-          })
-          .catch(error => {
+      async fetchArtworks() {
+        try{
+          const response = await axios.get('http://127.0.0.1:8000/all-a')
+          this.artworks = response.data.slice(0,this.limit);
+          console.log('this.artworks', this.artworks)
+          this.isLoading = false;
+        }catch(error){
             console.error('Error fetching artworks:', error);
-          });
+        };
       },
       previousPage() {
         if (this.currentPage > 1) {
