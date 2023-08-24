@@ -55,7 +55,7 @@ export default {
       itemsPerPage: 20,
       currentPage: 1,
       showMenu: false,
-      limit: 400
+      limit: 200
     };
   },
   computed: {

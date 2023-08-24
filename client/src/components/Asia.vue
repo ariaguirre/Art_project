@@ -4,7 +4,7 @@
         <h1 class="h1">Asian Art</h1>
       </div>
       <br/>
-    <router-link class="btn" to="/objects">Return</router-link>
+    <router-link class="btn" to="/artworks">Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -37,7 +37,7 @@
         artworks: [],
         itemsPerPage: 10,
         currentPage: 1,
-        limit: 400
+        limit: 200
       };
     },
     computed: {
