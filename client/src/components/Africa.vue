@@ -4,7 +4,7 @@
         <h1 class="h1">Arts of Africa, Oceania, and the Americas</h1>
       </div>
       <br/>
-    <router-link class="btn" to="/objects">Return</router-link>
+    <router-link class="btn" to="/artworks">Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -53,20 +53,15 @@
       this.fetchArtworks();
     },
     methods: {
-      fetchArtworks() {
-        axios.get('http://127.0.0.1:8000/africa')
-          .then(response => {
-            this.artworks = response.data.map(artwork => ({
-          ...artwork,
-          objectId: artwork.objectId // Asegúrate de que el nombre del campo sea correcto
-        }));
-        this.isLoading = false;
-        console.log(this.artworks)
-          })
-          .catch(error => {
+      async fetchArtworks() {
+        try{
+          const response = await axios.get('http://127.0.0.1:8000/all-af');
+          this.artworks = response.data.slice(0,200);
+          this.isLoading=false;
+        }catch(error){
             console.error('Error fetching artworks:', error);
-          });
-      },
+            };
+       },
       previousPage() {
         if (this.currentPage > 1) {
           this.currentPage--;
