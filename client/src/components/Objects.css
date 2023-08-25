@@ -28,7 +28,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     align-items: center;
     font-size: large;
-    margin-left: 57rem;
+    margin-left: 50%;
     margin-top: 15rem;
     margin-bottom: 15rem;
 }
@@ -45,7 +45,7 @@
   background-color: rgb(114, 32, 32);
   margin-top: -0.5rem;
   margin-left: -1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   padding: 15px;
   letter-spacing: 2px;
     
@@ -63,29 +63,30 @@
 }
   
 .artwork-info {
+    text-decoration: none;
     text-align: center;
     font-weight: 400;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 10px;
-    text-decoration: none;
 }
 
 .artwork-info h2{
+    text-decoration: none;
     color: black;
     font-size: large;
-    text-decoration: none;
 
 }
 .artwork-info h3{
+    text-decoration: none;
     color: black;
     font-size: medium;
     margin-bottom: 25px;
-    text-decoration: none;
 
 }
 
   
 .artwork-image {
+    text-decoration: none;
     max-width: 100%;
     height: auto;
 }
@@ -247,4 +248,11 @@
   margin-left: 17rem;
   margin-top: 2rem;
   font-weight: bold;
+}
+
+.btn{
+  text-decoration: none;
+  margin-left: 2%;
+  color: rgb(114, 32, 32);
+  font-size: 20px;
 }
