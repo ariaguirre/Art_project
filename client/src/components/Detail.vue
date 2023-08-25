@@ -1,11 +1,27 @@
 <template>
-  <div>
+  <div class="back">
     <div class="header">
-      <h1>European Artworks</h1>
+  <div class="header-left">
+    <button class="menu-button" @click="showMenu = !showMenu"></button>
+  </div>
+  <div class="header-center">
+    <h1 class="h1">Artworks</h1>
+  </div>
+</div>
+      <br/>
+      <div :class="{ 'popup': true, 'popup-active': showMenu }">
+      <button class="close" @click="showMenu = !showMenu">X</button>
+      <p>Art categories</p>
+        <ul class="menu-list">
+        <li><router-link to="/europe">European Art</router-link></li>
+        <li><router-link to="/asia">Asian Art</router-link></li>
+        <li><router-link to="/africa">Arts of Africa, Oceania, and the Americas</router-link></li>
+        <li><router-link to="/egypt">Egyptian Art</router-link></li>
+        <li><router-link to="/greek">Greek and Roman Art</router-link></li>
+        <li><router-link to="/islamic">Islamic Art</router-link></li>
+      </ul>
     </div>
-    <br/>
-    <br/>
-    <router-link class="btn" to="/objects">Return</router-link>
+    <router-link class="btn" to="/artworks">← Return</router-link>
     <div class="container">
       <h2>{{ artwork.title }} - {{ artwork.artistDisplayName }}</h2>
       <br/>
@@ -32,7 +48,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      artwork: {}
+      artwork: {},
+      showMenu: false
     };
   },
   created() {
