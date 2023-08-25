@@ -15,6 +15,7 @@
       <button class="close" @click="showMenu = !showMenu">X</button>
       <p>Art categories</p>
         <ul class="menu-list">
+        <li><router-link to="/europe">European Art</router-link></li>
         <li><router-link to="/asia">Asian Art</router-link></li>
         <li><router-link to="/africa">Arts of Africa, Oceania, and the Americas</router-link></li>
         <li><router-link to="/egypt">Egyptian Art</router-link></li>

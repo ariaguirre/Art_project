@@ -8,6 +8,7 @@ import Asia from '../components/Asia.vue'
 import Egypt from '../components/Egypt.vue'
 import Greek from '../components/Greek.vue'
 import Islamic from '../components/Islamic.vue'
+import All from '../components/All.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,8 +19,8 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/artworks',
-      name: 'artworks',
+      path: '/europe',
+      name: 'europe',
       component: Objects
     },
     {
@@ -56,6 +57,11 @@ const router = createRouter({
       path: '/islamic',
       name: 'islamic',
       component: Islamic
+    },
+    {
+      path: '/artworks',
+      name: 'artworks',
+      component: All
     },
   ]
 })

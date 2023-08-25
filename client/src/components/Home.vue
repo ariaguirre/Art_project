@@ -57,7 +57,7 @@
 export default {
   methods: {
       artworks() {
-        this.$router.push('/artworks');
+        this.$router.push('/all');
       }
   }
 };

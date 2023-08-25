@@ -1,27 +1,27 @@
 <template>
-  <div class="back">
-    <div class="header">
-  <div class="header-left">
-    <button class="menu-button" @click="showMenu = !showMenu"></button>
-  </div>
-  <div class="header-center">
-    <h1 class="h1">Islamic Art</h1>
-  </div>
-</div>
-      <br/>
-      <div :class="{ 'popup': true, 'popup-active': showMenu }">
-      <button class="close" @click="showMenu = !showMenu">X</button>
-      <p>Art categories</p>
-        <ul class="menu-list">
-        <li><router-link to="/europe">European Art</router-link></li>
-        <li><router-link to="/asia">Asian Art</router-link></li>
-        <li><router-link to="/africa">Arts of Africa, Oceania, and the Americas</router-link></li>
-        <li><router-link to="/egypt">Egyptian Art</router-link></li>
-        <li><router-link to="/greek">Greek and Roman Art</router-link></li>
-        <li><router-link to="/islamic">Islamic Art</router-link></li>
-      </ul>
+    <div class="back">
+      <div class="header">
+    <div class="header-left">
+      <button class="menu-button" @click="showMenu = !showMenu"></button>
     </div>
-    <router-link class="btn" to="/artworks">← Return</router-link>
+    <div class="header-center">
+      <h1 class="h1">All Artworks</h1>
+    </div>
+  </div>
+      <br/>
+  
+      <div :class="{ 'popup': true, 'popup-active': showMenu }">
+        <button class="close" @click="showMenu = !showMenu">X</button>
+        <p>Art categories</p>
+          <ul class="menu-list">
+          <li><router-link to="/europe">European Art</router-link></li>
+          <li><router-link to="/asia">Asian Art</router-link></li>
+          <li><router-link to="/africa">Arts of Africa, Oceania, and the Americas</router-link></li>
+          <li><router-link to="/egypt">Egyptian Art</router-link></li>
+          <li><router-link to="/greek">Greek and Roman Art</router-link></li>
+          <li><router-link to="/islamic">Islamic Art</router-link></li>
+        </ul>
+      </div>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -52,9 +52,10 @@
       return {
         isLoading: true,
         artworks: [],
-        itemsPerPage: 10,
+        itemsPerPage: 20,
         currentPage: 1,
         showMenu: false,
+        limit: 200
       };
     },
     computed: {
@@ -73,12 +74,13 @@
     methods: {
       async fetchArtworks() {
         try{
-        const response = await axios.get('http://127.0.0.1:8000/all-i');
-        this.artworks = response.data.slice(0, 100);
-        this.isLoading = false;
+          const response = await axios.get('http://127.0.0.1:8000/all-p')
+          this.artworks = response.data.slice(0, this.limit);
+          console.log('this.artworks', this.artworks)
+          this.isLoading = false;
         }catch(error){
-            console.error('Error fetching artworks:', error);
-      };
+          console.error('Error fetching artworks:', error);
+        };
       },
       previousPage() {
         if (this.currentPage > 1) {
@@ -92,7 +94,7 @@
       },
       gotoPage(pageNumber) {
         this.currentPage = pageNumber;
-      }
+      },
     }
   };
   </script>
