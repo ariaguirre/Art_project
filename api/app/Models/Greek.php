@@ -10,8 +10,8 @@ class Greek extends Model
     protected $table = 'greek';
     use HasFactory;
     protected $fillable = [
-    'title', 'artistDisplayName', 'primaryImage', 'department', 'artistDisplayBio',
-    'artistNationality', 'artistBeginDate', 'artistEndDate', 'artistWikidata_URL',
-    'objectBeginDate', 'objectEndDate', 'dimensions', 'objectURL',
+        'title', 'artistDisplayName', 'primaryImage', 'department', 'artistDisplayBio', 'isHighlight',
+        'artistNationality', 'artistBeginDate', 'artistEndDate', 'artistWikidata_URL',
+        'objectBeginDate', 'objectEndDate', 'dimensions', 'objectURL',
     ];
 }

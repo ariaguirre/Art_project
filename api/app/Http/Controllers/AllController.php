@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Greek;
+use App\Models\All;
 
-class GreekController extends Controller
+class AllController extends Controller
 {
-    public function greek_paintings()
+    public function all_paintings()
     {
-        $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=13");
+        $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects");
         $responseData = $apiResponse->json();
 
         $objectIds = $responseData['objectIDs'] ?? [];
-        $limit = 1000;
+        $limit = 2000;
         $count = 0;  
         
         foreach ($objectIds as $objectId) {
@@ -36,7 +36,7 @@ class GreekController extends Controller
             $objectBeginDate = isset($objectData['objectBeginDate']) ? intval($objectData['objectBeginDate']) : null;
             $objectEndDate = isset($objectData['objectEndDate']) ? intval($objectData['objectEndDate']) : null;
 
-            Greek::updateOrCreate([
+            All::create([
                 'objectId' => $objectId,
                 'title' => $title,
                 'artistDisplayName' => $artistDisplayName,
@@ -57,7 +57,7 @@ class GreekController extends Controller
         return response()->json(['message' => 'Data inserted successfully']);
     }
     public function get_all(){
-        $paintings = Greek::all();
+        $paintings = All::all();
         return response()->json($paintings);
     }
 

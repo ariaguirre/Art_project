@@ -36,13 +36,14 @@ class IslamicController extends Controller
             $objectBeginDate = isset($objectData['objectBeginDate']) ? intval($objectData['objectBeginDate']) : null;
             $objectEndDate = isset($objectData['objectEndDate']) ? intval($objectData['objectEndDate']) : null;
 
-            Islamic::create([
+            Islamic::updateOrCreate([
                 'objectId' => $objectId,
                 'title' => $title,
                 'artistDisplayName' => $artistDisplayName,
                 'primaryImage' => $primaryImage,
                 'department' => $objectData['department'],
                 'artistDisplayBio' => $objectData['artistDisplayBio'],
+                'isHighlight' => $objectData['isHighlight'],
                 'artistNationality' => $objectData['artistNationality'],
                 'artistBeginDate' => $artistBeginDate,
                 'artistEndDate' => $artistEndDate,
