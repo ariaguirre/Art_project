@@ -4,7 +4,7 @@
       <h2>Virtual Art Gallery</h2>
     </div>
     <button class="btn" @click="artworks">Visit virtual museum</button>
-    <section class="carousel" aria-label="Gallery">
+    <!-- <section class="carousel" aria-label="Gallery"> -->
       <ol class="carousel__viewport">
   <li id="carousel__slide"
   tabindex="0"
@@ -28,10 +28,28 @@
   <img src="../img/img7.jpg"/>
   <img src="../img/img4.jpg"/>
   <img src="../img/img1.jpg"/>
+  <img src="../img/img2.jpg"/>
+  <img src="../img/img5.jpg"/>
+  <img src="../img/img6.jpg"/>
+  <img src="../img/img7.jpg"/>
+  <img src="../img/img4.jpg"/>
+  <img src="../img/img1.jpg"/>
+  <img src="../img/img2.jpg"/>
+  <img src="../img/img5.jpg"/>
+  <img src="../img/img6.jpg"/>
+  <img src="../img/img7.jpg"/>
+  <img src="../img/img4.jpg"/>
+  <img src="../img/img1.jpg"/>
+  <img src="../img/img2.jpg"/>
+  <img src="../img/img5.jpg"/>
+  <img src="../img/img6.jpg"/>
+  <img src="../img/img7.jpg"/>
+  <img src="../img/img4.jpg"/>
+  <img src="../img/img1.jpg"/>
 </div>
 </li>
 </ol>
-</section>
+<!-- </section> -->
 </div>
 </template>
 

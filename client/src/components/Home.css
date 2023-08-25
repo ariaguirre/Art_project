@@ -63,6 +63,8 @@ padding: 0;
 }
 
 .carousel {
+  border: 7px solid red;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,16 +76,17 @@ padding: 0;
 }
 
 .carousel__viewport {
+  /* border: 7px solid green; */
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40%;
-  margin-right: -50rem;
-  margin-top: -6rem;
+  width: 35%;
   bottom: 0;
-  margin-left: 20rem;
+  /* margin-left: 20rem; */
+  /* margin-right: 50%; */
+  margin-left: 60%;
   height: 90vh;
   counter-reset: item;
   scroll-behavior: smooth;
@@ -93,13 +96,14 @@ padding: 0;
 }
 
 .carousel__snapper{
+  /* border: 7px solid blue; */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  animation: carouselScroll 500s linear infinite;
+  animation: carouselScroll 1000s linear infinite;
 }
 
 .carousel__slide {

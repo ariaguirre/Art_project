@@ -1,9 +1,25 @@
 <template>
-    <div>
-      <div class="header">
-        <h1 class="h1">Arts of Africa, Oceania, and the Americas</h1>
-      </div>
+  <div class="back">
+    <div class="header">
+  <div class="header-left">
+    <button class="menu-button" @click="showMenu = !showMenu"></button>
+  </div>
+  <div class="header-center">
+    <h1 class="h1">Arts of Africa, Oceania, and the Americas</h1>
+  </div>
+</div>
       <br/>
+      <div :class="{ 'popup': true, 'popup-active': showMenu }">
+      <button class="close" @click="showMenu = !showMenu">X</button>
+      <p>Art categories</p>
+        <ul class="menu-list">
+        <li><router-link to="/asia">Asian Art</router-link></li>
+        <li><router-link to="/africa">Arts of Africa, Oceania, and the Americas</router-link></li>
+        <li><router-link to="/egypt">Egyptian Art</router-link></li>
+        <li><router-link to="/greek">Greek and Roman Art</router-link></li>
+        <li><router-link to="/islamic">Islamic Art</router-link></li>
+      </ul>
+    </div>
     <router-link class="btn" to="/artworks">Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
@@ -36,7 +52,8 @@
         isLoading: true,
         artworks: [],
         itemsPerPage: 10,
-        currentPage: 1
+        currentPage: 1,
+        showMenu: false
       };
     },
     computed: {
