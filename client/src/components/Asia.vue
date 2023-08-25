@@ -35,11 +35,11 @@
       </div>
       </div>
       <div class="pagination">
-        <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
+        <button style="border-radius: 20%; width:auto;" @click="previousPage" :disabled="currentPage === 1">Previous</button>
         <span class="btn" v-for="pageNumber in totalPages" :key="pageNumber">
           <button @click="gotoPage(pageNumber)" :class="{ active: pageNumber === currentPage }">{{ pageNumber }}</button>
         </span>
-        <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+        <button  style="border-radius: 20%; width:auto;" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
       </div>
     </div>
   </template>

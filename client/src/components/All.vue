@@ -5,7 +5,7 @@
       <button class="menu-button" @click="showMenu = !showMenu"></button>
     </div>
     <div class="header-center">
-      <h1 class="h1">All Artworks</h1>
+      <h1 class="h1">Artworks of the World</h1>
     </div>
   </div>
       <br/>
@@ -35,11 +35,11 @@
       </div>
       </div>
       <div class="pagination">
-        <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
+        <button style="border-radius: 20%; width:auto;" @click="previousPage" :disabled="currentPage === 1">Previous</button>
         <span class="btn" v-for="pageNumber in totalPages" :key="pageNumber">
           <button @click="gotoPage(pageNumber)" :class="{ active: pageNumber === currentPage }">{{ pageNumber }}</button>
         </span>
-        <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+        <button  style="border-radius: 20%; width:auto;" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
       </div>
     </div>
   </template>
@@ -52,7 +52,7 @@
       return {
         isLoading: true,
         artworks: [],
-        itemsPerPage: 20,
+        itemsPerPage: 15,
         currentPage: 1,
         showMenu: false,
         limit: 200

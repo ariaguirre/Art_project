@@ -1,5 +1,5 @@
 .back{
-  background-color: #f8f7e9;
+  background-color: #e4e4de;
   margin-left: -1rem;
   margin-right: -1rem;
   margin-bottom: -5rem;
@@ -52,11 +52,12 @@
 }
   
 .artwork-item {
+    background-color: #f2f2ee;
     width: calc(20% - 20px);
     margin-bottom: 30px;
     padding: 10px;
     border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
     box-sizing: border-box;
     text-decoration: none;
     
@@ -92,7 +93,10 @@
 }
 
 .pagination {
+    width: 70%;
+    margin-left:15%;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
@@ -104,6 +108,7 @@
     background-color: rgb(114, 32, 32);
     color: white;
     font-size: 16px;
+    font-weight: bold;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -113,7 +118,7 @@
   }
   
   .pagination button.active {
-    background-color: rgb(73, 18, 18);
+    background-color: rgb(67, 11, 11);
   }
   
   .pagination button:hover {
