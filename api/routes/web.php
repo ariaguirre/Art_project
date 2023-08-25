@@ -8,6 +8,7 @@ use App\Http\Controllers\AsianController;
 use App\Http\Controllers\EgyptController;
 use App\Http\Controllers\AfricaController;
 use App\Http\Controllers\GreekController;
+use App\Http\Controllers\IslamicController;
 
 
 Route::get('/paintings', [PaintingController::class,'get_paintings']);
@@ -24,3 +25,6 @@ Route::get('/all-af', [AfricaController::class,'get_all']);
 
 Route::get('/greek', [GreekController::class,'greek_paintings']);
 Route::get('/all-g', [GreekController::class,'get_all']);
+
+Route::get('/islamic', [IslamicController::class,'islamic_paintings']);
+Route::get('/all-i', [IslamicController::class,'get_all']);

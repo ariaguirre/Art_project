@@ -4,7 +4,7 @@
         <h1 class="h1">Islamic Art</h1>
       </div>
       <br/>
-    <router-link class="btn" to="/objects">Return</router-link>
+    <router-link class="btn" to="/artworks">Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -53,19 +53,14 @@
       this.fetchArtworks();
     },
     methods: {
-      fetchArtworks() {
-        axios.get('http://127.0.0.1:8000/islamic')
-          .then(response => {
-            this.artworks = response.data.map(artwork => ({
-          ...artwork,
-          objectId: artwork.objectId 
-        }));
+      async fetchArtworks() {
+        try{
+        const response = await axios.get('http://127.0.0.1:8000/all-i');
+        this.artworks = response.data.slice(0, 100);
         this.isLoading = false;
-        console.log(this.artworks)
-          })
-          .catch(error => {
+        }catch(error){
             console.error('Error fetching artworks:', error);
-          });
+      };
       },
       previousPage() {
         if (this.currentPage > 1) {
