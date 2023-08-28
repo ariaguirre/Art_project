@@ -41,11 +41,13 @@
         </span>
         <button  style="border-radius: 20%; width:auto;" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
       </div>
+      <!-- <Footer/> -->
     </div>
   </template>
   
   <script>
   import axios from 'axios';
+  import Footer from '../assets/Footer.vue'
   
   export default {
     data() {
@@ -95,6 +97,9 @@
       gotoPage(pageNumber) {
         this.currentPage = pageNumber;
       },
+    },
+    components: {
+      Footer
     }
   };
   </script>

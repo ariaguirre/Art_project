@@ -3,7 +3,7 @@
     <div class="header">
       <h2>Virtual Art Gallery</h2>
     </div>
-    <button class="btn" @click="artworks">Visit virtual museum</button>
+    <button class="btn" @click="categories">Visit virtual museum</button>
     <!-- <section class="carousel" aria-label="Gallery"> -->
       <ol class="carousel__viewport">
   <li id="carousel__slide"
@@ -56,8 +56,8 @@
 <script>
 export default {
   methods: {
-      artworks() {
-        this.$router.push('/artworks');
+      categories() {
+        this.$router.push('/categories');
       }
   }
 };

@@ -9,6 +9,7 @@ import Egypt from '../components/Egypt.vue'
 import Greek from '../components/Greek.vue'
 import Islamic from '../components/Islamic.vue'
 import All from '../components/All.vue'
+import Categories from '../components/Categories.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,11 @@ const router = createRouter({
       path: '/artworks',
       name: 'artworks',
       component: All
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      component: Categories
     },
   ]
 })

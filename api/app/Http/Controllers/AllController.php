@@ -28,6 +28,8 @@ class AllController extends Controller
             $title = $objectData['title'];
             $artistDisplayName = $objectData['artistDisplayName'];
 
+            $existingArtwork = All::where('title', $title)->first();     
+
             if (empty($primaryImage) || empty($title)) continue;
             if (empty($artistDisplayName)) 'Unknown';
 
@@ -36,6 +38,7 @@ class AllController extends Controller
             $objectBeginDate = isset($objectData['objectBeginDate']) ? intval($objectData['objectBeginDate']) : null;
             $objectEndDate = isset($objectData['objectEndDate']) ? intval($objectData['objectEndDate']) : null;
 
+            if(!$existingArtwork){
             All::create([
                 'objectId' => $objectId,
                 'title' => $title,
@@ -53,7 +56,7 @@ class AllController extends Controller
                 'dimensions' => $objectData['dimensions'],
                 'objectURL' => $objectData['objectURL'],
             ]);
-        }
+        }}
         return response()->json(['message' => 'Data inserted successfully']);
     }
     public function get_all(){
