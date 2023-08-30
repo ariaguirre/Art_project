@@ -64,4 +64,41 @@ class AllController extends Controller
         return response()->json($paintings);
     }
 
+    public function getObjectDetails($objectId)
+    {
+        $apiResponse = Http::withoutVerifying()->get("https://collectionapi.metmuseum.org/public/collection/v1/objects/{$objectId}");
+        $objectData = $apiResponse->json(); 
+    
+        $title = $objectData['title'] ?? 'No title available';
+        $artistDisplayName = $objectData['artistDisplayName'] ?? 'Unknown artist';
+        $primaryImage = $objectData['primaryImage'] ?? null;
+        $department = $objectData['department'] ?? null;
+        $artistDisplayBio = $objectData['artistDisplayBio'] ?? 'No bio available';
+        $artistNationality = $objectData['artistNationality'] ?? null;
+        $artistBeginDate = $objectData['artistBeginDate'] ?? null;
+        $artistEndDate = $objectData['artistEndDate'] ?? null;
+        $artistWikidata_URL = $objectData['artistWikidata_URL'] ?? 'No URL available.';
+        $objectBeginDate = $objectData['objectBeginDate'] ?? null;
+        $objectEndDate = $objectData['objectEndDate'] ?? null;
+        $dimensions = $objectData['dimensions'] ?? null;
+        $objectURL = $objectData['objectURL'] ?? 'No URL available';
+    
+        return response()->json([
+            'objectId' => $objectId,
+            'title' => $title,
+            'artistDisplayName' => $artistDisplayName,
+            'primaryImage' => $primaryImage,
+            'department' => $department,
+            'artistDisplayBio' => $artistDisplayBio,
+            'artistNationality'=> $artistNationality,
+            'artistBeginDate' =>$artistBeginDate,
+            'artistEndDate' => $artistEndDate,
+            'artistWikidata_URL' => $artistWikidata_URL,
+            'objectBeginDate' => $objectBeginDate,
+            'objectEndDate' => $objectEndDate,
+            'dimensions' => $dimensions,
+            'objectURL' => $objectURL,
+        ]);
+    }
 }
+

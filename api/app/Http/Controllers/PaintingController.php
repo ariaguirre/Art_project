@@ -52,4 +52,15 @@ class PaintingController extends Controller
         return response()->json($paintings);
     }
 
+    public function getObjectDetails($objectId)
+    {
+        $painting = Painting::where('objectId', $objectId)->first();
+
+        if ($painting) {
+            return response()->json($painting);
+        } else {
+            return response()->json(['message' => 'Painting not found'], 404);
+        }
+    }
+
 }

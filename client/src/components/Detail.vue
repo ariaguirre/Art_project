@@ -53,12 +53,12 @@ export default {
     };
   },
   created() {
-    const objectId = this.$route.params.objectId;
-    this.fetchArtworkDetail(objectId);
+    const { objectId, department } = this.$route.params;
+    this.fetchArtworkDetail(objectId, department);
   },
   methods: {
-    fetchArtworkDetail(objectId) {
-      axios.get(`http://127.0.0.1:8000/objects/${objectId}`)
+    fetchArtworkDetail(objectId, department) {
+      axios.get(`http://127.0.0.1:8000/${department}/${objectId}`)
         .then(response => {
           this.artwork = response.data;
           console.log(this.artwork)

@@ -22,17 +22,35 @@
         <li><router-link to="/islamic">Islamic Art</router-link></li>
       </ul>
     </div>
+    <div class="popup-overlay" v-if="showPopup">
+      <div class="popup-content">
+        <button class="close" @click="closePopup">X</button>
+        <h1>Artwork detail</h1>
+        <div class="popup-info">
+          <h3>About the artist {{ selectedArtwork.artistDisplayName }}: </h3>
+          <p>{{ selectedArtwork.artistDisplayBio }}.</p>
+          <h3>About the Artwork "{{ selectedArtwork.title }}.":</h3>
+          <label>Dimesions: {{ selectedArtwork.dimensions }}.</label>
+          <br/>
+          <label>Created between: {{ selectedArtwork.objectBeginDate }} - {{ selectedArtwork.objectEndDate }}.</label>
+          <br/>
+          <label>Department: {{ selectedArtwork.department }}.</label>
+          <br/>
+          <p>Click <a :href="selectedArtwork.artistWikidata_URL" target="_blank">here</a> to know more about {{ selectedArtwork.artistDisplayName }} and <a :href="selectedArtwork.objectURL" target="_blank">here</a> to know more about "{{ selectedArtwork.title }}".
+          </p>
+        </div>
+        <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />
+      </div>
+    </div>
     <router-link class="btn" to="/artworks">← Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
-        <router-link :to="'/detail/' + artwork.objectId">
-          <div class="artwork-info">
-            <h2>{{ artwork.title }}</h2>
-            <h3>{{ artwork.artistDisplayName }}</h3>
-            <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
-          </div>
-        </router-link>
+        <div class="artwork-info" @click="openPopup(artwork)">
+          <h2>{{ artwork.title }}</h2>
+          <h3>{{ artwork.artistDisplayName }}</h3>
+          <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
+        </div>
       </div>
       </div>
       <div class="pagination">
@@ -55,7 +73,9 @@
         artworks: [],
         itemsPerPage: 10,
         currentPage: 1,
-        showMenu: false
+        showMenu: false,
+        selectedArtwork: null,
+        showPopup: false,
       };
     },
     computed: {
@@ -93,7 +113,16 @@
       },
       gotoPage(pageNumber) {
         this.currentPage = pageNumber;
-      }
+      },
+      openPopup(artwork) {
+      this.selectedArtwork = artwork;
+      this.showPopup = true;
+    },
+
+    closePopup() {
+      this.selectedArtwork = null;
+      this.showPopup = false;
+    },
     }
   };
   </script>

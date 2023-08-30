@@ -14,6 +14,7 @@ use App\Http\Controllers\AllController;
 
 Route::get('/paintings', [PaintingController::class,'get_paintings']);
 Route::get('/all', [PaintingController::class,'get_all']);
+Route::get('/all/{objectID}', [PaintingController::class,'getObjectDetails']);
 
 Route::get('/asian', [AsianController::class,'asian_paintings']);
 Route::get('/all-a', [AsianController::class,'get_all']);
@@ -31,4 +32,5 @@ Route::get('/islamic', [IslamicController::class,'islamic_paintings']);
 Route::get('/all-i', [IslamicController::class,'get_all']);
 
 Route::get('/total', [AllController::class,'all_paintings']);
+Route::get('/total/{objectID}', [AllController::class,'getObjectDetails']);
 Route::get('/all-p', [AllController::class,'get_all']);
