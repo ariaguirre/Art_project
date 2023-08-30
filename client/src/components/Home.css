@@ -139,15 +139,17 @@ padding: 0;
   width: calc(30% - 10px); /* Ajusta el ancho según tus necesidades */
   border: 1px solid #e2dada;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  text-decoration: none;
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
   margin-left: 2%;
   margin-top: 3%;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-
+  transition: transform 0.3s ease-in-out;
 }
+
+
 
 .cat-cont h3 {
   margin: 10px 0;
@@ -163,4 +165,5 @@ padding: 0;
 
 .cat-cont:hover{
   background-color: rgb(236, 236, 236);
+  transform: scale(1.1);
 }

@@ -42,7 +42,7 @@
         <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />
       </div>
     </div>
-    <router-link class="btn" to="/artworks">← Return</router-link>
+    <router-link class="btn" to="/categories">← Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -95,7 +95,7 @@
       async fetchArtworks() {
         try{
           const response = await axios.get('http://127.0.0.1:8000/all-af');
-          this.artworks = response.data.slice(0,200);
+          this.artworks = response.data.slice(0,100);
           this.isLoading=false;
         }catch(error){
             console.error('Error fetching artworks:', error);

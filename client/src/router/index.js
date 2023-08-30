@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
 import Objects from '../components/Objects.vue'
 import Detail from '../components/Detail.vue'
-import Departments from '../components/Departments.vue'
 import Africa from '../components/Africa.vue'
 import Asia from '../components/Asia.vue'
 import Egypt from '../components/Egypt.vue'
@@ -23,11 +22,6 @@ const router = createRouter({
       path: '/europe',
       name: 'europe',
       component: Objects
-    },
-    {
-      path: '/departments',
-      name: 'departments',
-      component: Departments
     },
     {
       path: '/:department/:objectId',
