@@ -34,18 +34,6 @@
   <img src="../img/img7.jpg"/>
   <img src="../img/img4.jpg"/>
   <img src="../img/img1.jpg"/>
-  <img src="../img/img2.jpg"/>
-  <img src="../img/img5.jpg"/>
-  <img src="../img/img6.jpg"/>
-  <img src="../img/img7.jpg"/>
-  <img src="../img/img4.jpg"/>
-  <img src="../img/img1.jpg"/>
-  <img src="../img/img2.jpg"/>
-  <img src="../img/img5.jpg"/>
-  <img src="../img/img6.jpg"/>
-  <img src="../img/img7.jpg"/>
-  <img src="../img/img4.jpg"/>
-  <img src="../img/img1.jpg"/>
 </div>
 </li>
 </ol>

@@ -1,13 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
 import Objects from '../components/Objects.vue'
-import Detail from '../components/Detail.vue'
 import Africa from '../components/Africa.vue'
 import Asia from '../components/Asia.vue'
 import Egypt from '../components/Egypt.vue'
 import Greek from '../components/Greek.vue'
 import Islamic from '../components/Islamic.vue'
-import All from '../components/All.vue'
 import Categories from '../components/Categories.vue'
 
 const router = createRouter({
@@ -22,11 +20,6 @@ const router = createRouter({
       path: '/europe',
       name: 'europe',
       component: Objects
-    },
-    {
-      path: '/:department/:objectId',
-      name: 'detail',
-      component: Detail
     },
     {
       path: '/africa',
@@ -52,11 +45,6 @@ const router = createRouter({
       path: '/islamic',
       name: 'islamic',
       component: Islamic
-    },
-    {
-      path: '/artworks',
-      name: 'artworks',
-      component: All
     },
     {
       path: '/categories',
