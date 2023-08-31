@@ -27,8 +27,8 @@
         <button class="close" @click="closePopup">X</button>
         <h1>Artwork detail</h1>
         <div class="popup-info">
-          <h3>About the artist {{ selectedArtwork.artistDisplayName }}: </h3>
-          <p>{{ selectedArtwork.artistDisplayBio }}.</p>
+          <h3>{{ selectedArtwork.artistDisplayName || 'Unknown artist' }}</h3>
+          <p>{{ selectedArtwork.artistDisplayBio || 'Bio not available' }}.</p>
           <h3>About the Artwork "{{ selectedArtwork.title }}.":</h3>
           <label>Dimesions: {{ selectedArtwork.dimensions }}.</label>
           <br/>
@@ -36,7 +36,7 @@
           <br/>
           <label>Department: {{ selectedArtwork.department }}.</label>
           <br/>
-          <p>Click <a :href="selectedArtwork.artistWikidata_URL" target="_blank">here</a> to know more about {{ selectedArtwork.artistDisplayName }} and <a :href="selectedArtwork.objectURL" target="_blank">here</a> to know more about "{{ selectedArtwork.title }}".
+          <p>Click <a :href="selectedArtwork.objectURL" target="_blank">here</a> to know more about "{{ selectedArtwork.title }}".
           </p>
         </div>
         <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />

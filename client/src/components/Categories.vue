@@ -37,7 +37,7 @@
         <div class="cat-cont">
             <router-link to="/islamic">
             <h3>Islamic Art</h3>
-            <img src="../img/img1.jpg"/>
+            <img src="../img/islamic.jpg"/>
             </router-link>
         </div>
       </div>

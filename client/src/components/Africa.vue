@@ -27,7 +27,7 @@
         <button class="close" @click="closePopup">X</button>
         <h1>Artwork detail</h1>
         <div class="popup-info">
-          <h3>About the artist {{ selectedArtwork.artistDisplayName }}: </h3>
+          <h3>About the artist {{ selectedArtwork.artistDisplayName || 'Unknown' }}: </h3>
           <p>{{ selectedArtwork.artistDisplayBio }}.</p>
           <h3>About the Artwork "{{ selectedArtwork.title }}.":</h3>
           <label>Dimesions: {{ selectedArtwork.dimensions }}.</label>
@@ -48,7 +48,7 @@
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
         <div class="artwork-info" @click="openPopup(artwork)">
           <h2>{{ artwork.title }}</h2>
-          <h3>{{ artwork.artistDisplayName }}</h3>
+          <h3>{{ artwork.artistDisplayName || 'Unknown'}}</h3>
           <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
         </div>
       </div>
