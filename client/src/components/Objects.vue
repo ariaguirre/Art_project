@@ -9,8 +9,6 @@
   </div>
 </div>
     <br/>
-    <!-- <button class="dept" @click="toDepartments">Art departments</button> -->
-
     <div :class="{ 'popup': true, 'popup-active': showMenu }">
       <button class="close" @click="showMenu = !showMenu">X</button>
       <p>Art categories</p>

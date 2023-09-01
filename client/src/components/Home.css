@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 
 .back{
-  background-color: #e6e5d1;
+  background-color: #e3e3e3d4;
   margin-left: -1rem;
   margin-right: -1rem;
   margin-bottom: -5rem;
@@ -11,14 +11,15 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-family: 'Lato', sans-serif;align-items: center;
-  font-size: 22px;
+  font-family: 'Lato', sans-serif;
+  align-items: center;
+  font-size: 15px;
   width: 100%;
   color:#ffff;
   background-color: rgb(114, 32, 32);
   margin-top: -0.5rem;
   margin-left: -1rem;
-  padding: 18px;
+  padding: 7px;
   letter-spacing: 2px;
 }
 
@@ -29,7 +30,6 @@
   color: white;
   font-size: 24px;
   width: 25%;
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   font-family: 'Comfortaa';
 
   padding: 30px;
@@ -49,13 +49,13 @@
 .inicio-btn{
   border: none;
   position: absolute;
-  background-color: rgba(211, 159, 159, 0.7);
+  background-color: rgba(181, 118, 118, 0.7);
   backdrop-filter: blur(10px);
   color: white;
   font-size: 24px;
   width: 25%;
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-  font-family: 'Comfortaa';
+  font-family: 'Lato', sans-serif;
+
   padding: 30px;
   border-radius: 10px;
   cursor: pointer;
@@ -78,30 +78,6 @@
   flex-direction: row;
   width: 100%;
 }
-
-/* @keyframes carouselScrollUp {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  20%, 80% {
-    transform: translateY(-100%);
-  }
-  40%, 60% {
-    transform: translateY(-200%);
-  }
-}
-
-@keyframes carouselScrollDown {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  20%, 80% {
-    transform: translateY(100%); 
-  }
-  40%, 60% {
-    transform: translateY(200%); 
-  }
-} */
 
 @keyframes carouselScroll {
   0%, 100% {
@@ -135,7 +111,6 @@ padding: 0;
 }
 
 .carousel__viewport {
-  /* border: 3px solid red; */
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -145,7 +120,6 @@ padding: 0;
   bottom: 0;
   margin-left: 51%;
   margin-top: -1%;
-  /* margin-right: 1%; */
   height: 100vh;
   counter-reset: item;
   scroll-behavior: smooth;
@@ -155,7 +129,6 @@ padding: 0;
 }
 
 .viewport{
-  /* border: 3px solid green; */
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -182,8 +155,7 @@ padding: 0;
   height: 300%; 
   display: flex;
   flex-direction: column;
-  /* animation: carouselScrollUp 150s linear infinite; */
-  animation: carouselScroll 150s linear infinite; 
+  animation: carouselScroll 250s linear infinite; 
 }
 
 .snapper{
@@ -194,8 +166,7 @@ padding: 0;
   height: 300%; 
   display: flex;
   flex-direction: column;
-  /* animation: carouselScrollDown 150s linear infinite; */
-  animation: carouselScroll 150s linear infinite; 
+  animation: carouselScroll 250s linear infinite; 
 }
 
 .carousel__slide {
@@ -243,46 +214,65 @@ padding: 0;
 }
 
 .cat-cont {
-  width: calc(30% - 10px); 
-  /* border: 1px solid #e2dada; */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
-  /* background-color: #e5e2e2; */
   border-radius: 10px;
   text-decoration: none;
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
-  margin-left: 2%;
-  margin-top: 3%;
+  margin-right: 0.5%;
+  margin-top: 2%;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-}
-
-.cat-cont h3 {
-  margin: 10px 0;
-  text-decoration: none;
-  color: rgb(70, 16, 16);
-  font-family: 'Lato', sons-serif;
+  position: relative;
+  width: 32%;
+  height: 50vh;
+  overflow: hidden;
 
 }
 
 .cat-cont img {
   max-width: 100%;
-  border-radius: 10px;
+  max-height: 100%;
+  display: block;
+  margin: 0;
+  line-height: 0;
+  transition: transform 0.3s ease-in-out;
+  object-fit: cover;
+  transform: scale(1.3);
+}
+.cat-cont:hover img {
+  filter: blur(5px) brightness(0.5);; 
+  transform: scale(1.4);
 }
 
-.cat-cont:hover{
-  background-color: rgb(211, 209, 209);
-  /* transform: scale(1.1); */
-}
 
 
 .cat-cont button{
   border: none;
   padding: 20px;
-  font-size: 20px;
+  font-size: 10px;
   background-color: transparent;
   font-weight: bold;
-  color: rgb(70, 16, 16);
+  color: #ffff;
   font-family: 'Lato', sans-serif;
+  border: 2px solid red;
+}
+
+.cat-cont:hover::before {
+  content: attr(data-category); 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:transparent;
+  color: rgb(245, 240, 240);
+  font-weight: bold;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  z-index: 1; 
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  display: inline-block;
 }

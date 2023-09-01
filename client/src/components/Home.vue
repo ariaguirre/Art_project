@@ -22,6 +22,17 @@
             <img src="../img/img1.jpg"/>
             <img src="../img/islamic.jpg"/>
             <img src="../img/img7.jpg"/>
+            <img src="../img/img5.jpg"/>
+            <img src="../img/img6.jpg"/>
+            <img src="../img/greek.jpg"/>
+            <img src="../img/img2.jpg"/>
+            <img src="../img/egypt.jpg"/>
+            <img src="../img/africa.jpg"/>
+            <img src="../img/img4.jpg"/>
+            <img src="../img/asia.jpg"/>
+            <img src="../img/img1.jpg"/>
+            <img src="../img/islamic.jpg"/>
+            <img src="../img/img7.jpg"/>
           </div>
         </li>
       </ol>
@@ -32,6 +43,17 @@
             class="slide">
             <div class="snapper">
               <img src="../img/asia.jpg"/>
+              <img src="../img/img1.jpg"/>
+              <img src="../img/img4.jpg"/>
+              <img src="../img/img7.jpg"/>
+              <img src="../img/img6.jpg"/>
+              <img src="../img/img5.jpg"/>
+              <img src="../img/img2.jpg"/>
+              <img src="../img/islamic.jpg"/>
+              <img src="../img/africa.jpg"/>
+              <img src="../img/egypt.jpg"/>
+            <img src="../img/greek.jpg"/>
+            <img src="../img/asia.jpg"/>
               <img src="../img/img1.jpg"/>
               <img src="../img/img4.jpg"/>
               <img src="../img/img7.jpg"/>
