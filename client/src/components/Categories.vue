@@ -6,37 +6,37 @@
       <div class="all-cont">
         <div class="cat-cont">
             <router-link to="/europe">
-            <h3>European Art</h3>
+            <button>European Art</button>
             <img src="../img/img1.jpg"/>
             </router-link>
         </div>
         <div class="cat-cont">
             <router-link to="/asia">
-            <h3>Asian art</h3>
+            <button>Asian art</button>
             <img src="../img/asia.jpg"/>
             </router-link>
         </div>
         <div class="cat-cont">
             <router-link to="/africa">
-            <h3>Arts of Africa, Oceania, and the Americas</h3>
+            <button>Arts of Africa, Oceania, and the Americas</button>
             <img src="../img/africa.jpg"/>
             </router-link>
         </div>
         <div class="cat-cont">
             <router-link to="/egypt">
-            <h3>Egyptian Art</h3>
+            <button>Egyptian Art</button>
             <img src="../img/egypt.jpg"/>
             </router-link>
         </div>
         <div class="cat-cont">
             <router-link to="/greek">
-            <h3>Greek and Roman Art</h3>
+            <button>Greek and Roman Art</button>
             <img src="../img/greek.jpg"/>
             </router-link>
         </div>
         <div class="cat-cont">
             <router-link to="/islamic">
-            <h3>Islamic Art</h3>
+            <button>Islamic Art</button>
             <img src="../img/islamic.jpg"/>
             </router-link>
         </div>
