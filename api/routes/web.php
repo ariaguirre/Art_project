@@ -15,6 +15,7 @@ use App\Http\Controllers\AllController;
 Route::get('/paintings', [PaintingController::class,'get_paintings']);
 Route::get('/all', [PaintingController::class,'get_all']);
 Route::get('/all/{objectID}', [PaintingController::class,'getObjectDetails']);
+Route::get('/search', [PaintingController::class, 'searchPaintings']);
 
 Route::get('/asian', [AsianController::class,'asian_paintings']);
 Route::get('/all-a', [AsianController::class,'get_all']);

@@ -8,8 +8,16 @@
     <h1 class="h1">European Artworks</h1>
   </div>
 </div>
+<div class="search-bar">
+      <input
+        type="text"
+        v-model="searchTerm"
+        placeholder="Search Title or Artist"
+      />
+      <button @click="search">🔍︎</button>
+    </div>
     <br/>
-    <div :class="{ 'popup': true, 'popup-active': showMenu }">
+    <div :class="{'popup': true, 'popup-active': showMenu }">
       <button class="close" @click="showMenu = !showMenu">X</button>
       <p>Art categories</p>
         <ul class="menu-list">
@@ -22,12 +30,24 @@
         <li><router-link to="/islamic">Islamic Art</router-link></li>
       </ul>
     </div>
+    <div v-if="searchResults.length > 0" class="result-container">
+      <div v-for="(artwork, index) in searchResults" :key="index" class="artwork-item">
+        <div class="artwork-info" @click="openPopup(artwork)">
+          <h2>{{ artwork.title }}</h2>
+          <h3>{{ artwork.artistDisplayName || 'Unknown' }}</h3>
+          <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
+        </div>
+      </div>
+    </div>
+          <!-- <div v-else-if="searchTerm && !isLoading">
+          <p>No hubo resultados.</p>
+        </div> -->
     <div class="popup-overlay" v-if="showPopup">
       <div class="popup-content">
         <button class="close" @click="closePopup">X</button>
         <h1>Artwork detail</h1>
         <div class="popup-info">
-          <h3>About the artist {{ selectedArtwork.artistDisplayName || 'Unknown' }}:: </h3>
+          <h3>About the artist {{ selectedArtwork.artistDisplayName || 'Unknown' }}: </h3>
           <p>{{ selectedArtwork.artistDisplayBio }}.</p>
           <h3>About the Artwork "{{ selectedArtwork.title }}.":</h3>
           <label>Dimesions: {{ selectedArtwork.dimensions }}.</label>
@@ -77,6 +97,8 @@ export default {
       limit: 200,
       selectedArtwork: null,
       showPopup: false,
+      searchTerm: '', 
+      searchResults: [], 
     };
   },
   computed: {
@@ -97,7 +119,7 @@ export default {
       try{
         const response = await axios.get('http://127.0.0.1:8000/all')
         this.artworks = response.data.slice(0, this.limit);
-        console.log('this.artworks', this.artworks)
+        // console.log('this.artworks', this.artworks)
         this.isLoading = false;
       }catch(error){
         console.error('Error fetching artworks:', error);
@@ -125,6 +147,18 @@ export default {
       this.selectedArtwork = null;
       this.showPopup = false;
     },
+    async search() {
+    this.isLoading = true;
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/search?term=${this.searchTerm}`);
+      this.searchResults = response.data;
+    } catch (error) {
+      console.error('Error al realizar la búsqueda:', error);
+      this.searchResults = [];
+    } finally {
+      this.isLoading = false; 
+    }
+  },
   }
 };
 </script>
