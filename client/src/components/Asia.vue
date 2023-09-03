@@ -80,13 +80,18 @@
         </span>
         <button  style="border-radius: 20%; width:auto;" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
       </div>
+      <Footer/>
     </div>
   </template>
   
   <script>
   import axios from 'axios';
+  import Footer from './Footer.vue';
   
   export default {
+    components:{
+    Footer,
+  },
     data() {
       return {
         isLoading: true,

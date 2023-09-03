@@ -1,4 +1,6 @@
 <template>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-s1h4xfQ/x6zG6xZ62zjJQI4cER1zsi5lLglx7ne2Rz3wnv2GnJ1+Jv5A5a1f1XeCZMh6rl3HCVQsffoJZvKDBZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <div class="back">
     <div class="header">
   <div class="header-left">
@@ -80,13 +82,18 @@
         </span>
         <button  style="border-radius: 20%; width:auto;" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
       </div>
-  </div>
+        <Footer/>
+      </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Footer from './Footer.vue';
 
 export default {
+  components:{
+    Footer,
+  },
   data() {
     return {
       isLoading: true,

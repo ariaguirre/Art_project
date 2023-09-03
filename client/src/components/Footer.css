@@ -1,0 +1,30 @@
+.footer{
+    width: 96%;
+    display: flex;
+    margin-top: 4%;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f5eeee;
+    padding: 10px 30px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  }
+  
+  svg{
+    height: 40px;
+  }
+  
+  .icons{
+    width: 6%;
+    display: flex;
+    flex-direction: row;
+    margin-right: 2%;
+    justify-content: space-between;
+  }
+
+
+.second{
+    border-radius: 50%;
+    padding: 5px 20px;
+    background-color: rgb(62, 9, 9);
+    color: white;
+}
