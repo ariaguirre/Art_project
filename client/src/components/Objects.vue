@@ -62,9 +62,9 @@
         <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />
       </div>
     </div>
-    <router-link class="btn" to="/categories">← Return</router-link>
+    <router-link class="btn" to="/categories" v-if="display">← Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
-      <div class="container">
+      <div class="container" v-if="display">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
         <div class="artwork-info" @click="openPopup(artwork)">
           <h2>{{ artwork.title }}</h2>
@@ -73,7 +73,7 @@
         </div>
       </div>
       </div>
-    <div class="pagination">
+    <div class="pagination" v-if="display">
         <button style="border-radius: 20%; width:auto;" @click="previousPage" :disabled="currentPage === 1">Previous</button>
         <span class="btn" v-for="pageNumber in totalPages" :key="pageNumber">
           <button @click="gotoPage(pageNumber)" :class="{ active: pageNumber === currentPage }">{{ pageNumber }}</button>
@@ -99,6 +99,7 @@ export default {
       showPopup: false,
       searchTerm: '', 
       searchResults: [], 
+      display: true,
     };
   },
   computed: {
@@ -149,9 +150,11 @@ export default {
     },
     async search() {
     this.isLoading = true;
+    this.display = false;
     try {
       const response = await axios.get(`http://127.0.0.1:8000/search?term=${this.searchTerm}`);
       this.searchResults = response.data;
+      console.log(this.searchResults)
     } catch (error) {
       console.error('Error al realizar la búsqueda:', error);
       this.searchResults = [];

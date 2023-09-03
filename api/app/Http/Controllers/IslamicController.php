@@ -60,5 +60,15 @@ class IslamicController extends Controller
         $paintings = Islamic::all();
         return response()->json($paintings);
     }
+    public function searchPaintings(Request $request)
+    {
+        $term = $request->input('term');
+
+        $results = Islamic::where('title', 'LIKE', "%$term%")
+            ->orWhere('artistDisplayName', 'LIKE', "%$term%")
+            ->get();
+
+        return response()->json($results);
+    }
 
 }

@@ -60,5 +60,15 @@ class GreekController extends Controller
         $paintings = Greek::all();
         return response()->json($paintings);
     }
+    public function searchPaintings(Request $request)
+    {
+        $term = $request->input('term');
+
+        $results = Greek::where('title', 'LIKE', "%$term%")
+            ->orWhere('artistDisplayName', 'LIKE', "%$term%")
+            ->get();
+
+        return response()->json($results);
+    }
 
 }

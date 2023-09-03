@@ -63,14 +63,14 @@ class PaintingController extends Controller
         }
     }
     public function searchPaintings(Request $request)
-{
-    $term = $request->input('term');
+    {
+        $term = $request->input('term');
 
-    $results = Painting::where('title', 'LIKE', "%$term%")
-        ->orWhere('artistDisplayName', 'LIKE', "%$term%")
-        ->get();
+        $results = Painting::where('title', 'LIKE', "%$term%")
+            ->orWhere('artistDisplayName', 'LIKE', "%$term%")
+            ->get();
 
-    return response()->json($results);
-}
+        return response()->json($results);
+    }
 
 }

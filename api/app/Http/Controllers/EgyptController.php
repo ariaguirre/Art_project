@@ -59,5 +59,15 @@ class EgyptController extends Controller
         $paintings = Egypt::all();
         return response()->json($paintings);
     }
+    public function searchPaintings(Request $request)
+    {
+        $term = $request->input('term');
+    
+        $results = Egypt::where('title', 'LIKE', "%$term%")
+            ->orWhere('artistDisplayName', 'LIKE', "%$term%")
+            ->get();
+    
+        return response()->json($results);
+    }
 
 }

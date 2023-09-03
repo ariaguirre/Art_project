@@ -19,18 +19,28 @@ Route::get('/search', [PaintingController::class, 'searchPaintings']);
 
 Route::get('/asian', [AsianController::class,'asian_paintings']);
 Route::get('/all-a', [AsianController::class,'get_all']);
+Route::get('/search', [AsianController::class, 'searchPaintings']);
+
 
 Route::get('/egypt', [EgyptController::class,'egypt_paintings']);
 Route::get('/all-e', [EgyptController::class,'get_all']);
+Route::get('/search', [EgyptController::class, 'searchPaintings']);
+
 
 Route::get('/africa', [AfricaController::class,'africa_paintings']);
 Route::get('/all-af', [AfricaController::class,'get_all']);
+Route::get('/search', [AfricaController::class, 'searchPaintings']);
+
 
 Route::get('/greek', [GreekController::class,'greek_paintings']);
 Route::get('/all-g', [GreekController::class,'get_all']);
+Route::get('/search', [GreekController::class, 'searchPaintings']);
+
 
 Route::get('/islamic', [IslamicController::class,'islamic_paintings']);
 Route::get('/all-i', [IslamicController::class,'get_all']);
+Route::get('/search', [IslamicController::class, 'searchPaintings']);
+
 
 Route::get('/total', [AllController::class,'all_paintings']);
 Route::get('/total/{objectID}', [AllController::class,'getObjectDetails']);
