@@ -39,8 +39,8 @@
         </div>
       </div>
     </div>
-          <!-- <div v-else-if="searchTerm && !isLoading">
-          <p>No hubo resultados.</p>
+          <!-- <div v-else-if="!searchResults && !isLoading">
+          <p>No results found.</p>
         </div> -->
     <div class="popup-overlay" v-if="showPopup">
       <div class="popup-content">
@@ -152,9 +152,8 @@ export default {
     this.isLoading = true;
     this.display = false;
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/search?term=${this.searchTerm}`);
+      const response = await axios.get(`http://127.0.0.1:8000/search-p?term=${this.searchTerm}`);
       this.searchResults = response.data;
-      console.log(this.searchResults)
     } catch (error) {
       console.error('Error al realizar la búsqueda:', error);
       this.searchResults = [];

@@ -8,6 +8,14 @@
     <h1 class="h1">Egyptian Art</h1>
   </div>
 </div>
+<div class="search-bar">
+      <input
+        type="text"
+        v-model="searchTerm"
+        placeholder="Search Title or Artist"
+      />
+      <button @click="search">🔍︎</button>
+    </div>
       <br/>
       <div :class="{ 'popup': true, 'popup-active': showMenu }">
       <button class="close" @click="showMenu = !showMenu">X</button>
@@ -22,6 +30,18 @@
         <li><router-link to="/islamic">Islamic Art</router-link></li>
       </ul>
     </div>
+    <div v-if="searchResults.length > 0" class="result-container">
+      <div v-for="(artwork, index) in searchResults" :key="index" class="artwork-item">
+        <div class="artwork-info" @click="openPopup(artwork)">
+          <h2>{{ artwork.title }}</h2>
+          <h3>{{ artwork.artistDisplayName || 'Unknown' }}</h3>
+          <img :src="artwork.primaryImage" alt="Artwork" class="artwork-image" />
+        </div>
+      </div>
+    </div>
+          <!-- <div v-else-if="!searchResults && !isLoading">
+          <p>No results found.</p>
+        </div> -->
     <div class="popup-overlay" v-if="showPopup">
       <div class="popup-content">
         <button class="close" @click="closePopup">X</button>
@@ -42,9 +62,9 @@
         <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />
       </div>
     </div>
-    <router-link class="btn" to="/categories">← Return</router-link>
+    <router-link class="btn" to="/categories" v-if="display">← Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
-      <div class="container">
+      <div class="container" v-if="display">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
         <div class="artwork-info" @click="openPopup(artwork)">
           <h2>{{ artwork.title }}</h2>
@@ -53,7 +73,7 @@
         </div>
       </div>
       </div>
-      <div class="pagination">
+      <div class="pagination" v-if="display">
         <button style="border-radius: 20%; width:auto;" @click="previousPage" :disabled="currentPage === 1">Previous</button>
         <span class="btn" v-for="pageNumber in totalPages" :key="pageNumber">
           <button @click="gotoPage(pageNumber)" :class="{ active: pageNumber === currentPage }">{{ pageNumber }}</button>
@@ -75,6 +95,8 @@
         showMenu: false,
         selectedArtwork: null,
         showPopup: false,
+        searchResults: [], 
+        display: true,
       };
     },
     computed: {
@@ -122,6 +144,19 @@
       this.selectedArtwork = null;
       this.showPopup = false;
     },
+    async search() {
+    this.isLoading = true;
+    this.display = false;
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/search-e?term=${this.searchTerm}`);
+      this.searchResults = response.data;
+    } catch (error) {
+      console.error('Error al realizar la búsqueda:', error);
+      this.searchResults = [];
+    } finally {
+      this.isLoading = false; 
+    }
+  },
     }
   };
   </script>
