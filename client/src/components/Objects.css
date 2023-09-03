@@ -67,11 +67,12 @@
     margin-bottom: 30px;
     padding: 10px;
     border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     text-decoration: none;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
 }
   
 .artwork-info {
@@ -121,8 +122,7 @@
   
   .pagination button {
     border: none;
-    background-color: rgb(114, 32, 32);
-    color: white;
+    color: rgb(114, 32, 32);
     font-size: 16px;
     font-weight: bold;
     width: 40px;
@@ -134,11 +134,14 @@
   }
   
   .pagination button.active {
-    background-color: rgb(67, 11, 11);
+    background-color: rgb(118, 46, 46);
+    color:#e4e4de;
   }
   
   .pagination button:hover {
     background-color: rgb(70, 16, 16);
+    color:#e4e4de;
+
   }
 
   .popup {
@@ -261,6 +264,20 @@
   color:rgb(67, 11, 11)
 }
 
+.return{
+  text-decoration: none;
+  margin-left: 5%;
+  color: rgb(114, 32, 32);
+  font-size: 20px;
+  cursor: pointer;
+  width: 10%;
+  margin-top: -1.5%;
+}
+
+.return:hover{
+  color:rgb(67, 11, 11)
+}
+
 
 .popup-overlay {
   position: fixed;
@@ -358,3 +375,11 @@ a{
   background-color: #d4cccc;
 
 }
+.noResults{
+  font-size: 30px;
+  margin-left: 43%;
+  margin-top: 5%;
+  height: 100vh;
+  width: 40%;
+  font-weight: 700;
+} 

@@ -18,6 +18,9 @@
       />
       <button @click="search">🔍︎</button>
     </div>
+    <div class="return">
+      <router-link  to="/categories" v-if="display">← Return</router-link>
+    </div>
     <br/>
     <div :class="{'popup': true, 'popup-active': showMenu }">
       <button class="close" @click="showMenu = !showMenu">X</button>
@@ -41,9 +44,9 @@
         </div>
       </div>
     </div>
-          <!-- <div v-else-if="!searchResults && !isLoading">
+          <div class="noResults" v-if="noResults == 1">
           <p>No results found.</p>
-        </div> -->
+        </div>
     <div class="popup-overlay" v-if="showPopup">
       <div class="popup-content">
         <button class="close" @click="closePopup">X</button>
@@ -64,7 +67,6 @@
         <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />
       </div>
     </div>
-    <router-link class="btn" to="/categories" v-if="display">← Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container" v-if="display">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
@@ -76,11 +78,11 @@
       </div>
       </div>
     <div class="pagination" v-if="display">
-        <button style="border-radius: 20%; width:auto;" @click="previousPage" :disabled="currentPage === 1">Previous</button>
+        <button style="border-radius: 50%; padding: 5px 10px; width:auto; font-weight: 900;" @click="previousPage" :disabled="currentPage === 1">←</button>
         <span class="btn" v-for="pageNumber in totalPages" :key="pageNumber">
           <button @click="gotoPage(pageNumber)" :class="{ active: pageNumber === currentPage }">{{ pageNumber }}</button>
         </span>
-        <button  style="border-radius: 20%; width:auto;" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+        <button  style="border-radius: 50%; padding: 5px 10px; width:auto; background-color: transparent;" @click="nextPage" :disabled="currentPage === totalPages">→</button>
       </div>
         <Footer/>
       </div>
@@ -107,6 +109,7 @@ export default {
       searchTerm: '', 
       searchResults: [], 
       display: true,
+      noResults: 0
     };
   },
   computed: {
@@ -127,7 +130,6 @@ export default {
       try{
         const response = await axios.get('http://127.0.0.1:8000/all')
         this.artworks = response.data.slice(0, this.limit);
-        // console.log('this.artworks', this.artworks)
         this.isLoading = false;
       }catch(error){
         console.error('Error fetching artworks:', error);
@@ -161,9 +163,12 @@ export default {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/search-p?term=${this.searchTerm}`);
       this.searchResults = response.data;
+      if (this.searchResults.length <= 0) this.noResults = 1;
+      if (this.searchResults.length > 0) this.noResults = 0;
     } catch (error) {
       console.error('Error al realizar la búsqueda:', error);
       this.searchResults = [];
+      this.noResults = 1;
     } finally {
       this.isLoading = false; 
     }
