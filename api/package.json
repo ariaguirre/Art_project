@@ -3,8 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "build:backend": "vite build"
+        "build": "npm run build"
     },
     "devDependencies": {
         "axios": "^1.1.2",
