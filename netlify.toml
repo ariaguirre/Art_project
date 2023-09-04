@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build" 
+  command = "vite build" 
   publish = "client/dist"
 
 [context.api]
-  command = "npm run build" 
+  command = "vite build" 
   publish = "api/dist" 
