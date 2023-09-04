@@ -1,7 +1,0 @@
-[build]
-  command = "npm run build" 
-  publish = "client/dist"
-
-[context.api]
-  command = "npm run build" 
-  publish = "api/dist" 
