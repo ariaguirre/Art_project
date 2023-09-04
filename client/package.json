@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:frontend && npm run build:backend",  
+    "build": "vite build",  
     "preview": "vite preview",
     "build:frontend": "vite build"
   },
