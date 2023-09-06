@@ -16,6 +16,9 @@
       />
       <button @click="search">🔍︎</button>
     </div>
+    <div class="return">
+      <router-link  to="/categories" v-if="display">← Return</router-link>
+    </div>
       <br/>
       <div :class="{ 'popup': true, 'popup-active': showMenu }">
       <button class="close" @click="showMenu = !showMenu">X</button>
@@ -62,7 +65,6 @@
         <img :src="selectedArtwork.primaryImage" alt="Artwork" class="artwork-image" />
       </div>
     </div>
-    <router-link class="return" to="/categories" v-if="display">← Return</router-link>
       <h3 class="loading" v-if="isLoading">Loading...</h3>
       <div class="container" v-if="display">
         <div v-for="(artwork, index) in displayedArtworks" :key="index" class="artwork-item">
